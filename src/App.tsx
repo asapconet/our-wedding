@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Itinierary from "./pages/Itinierary";
+import OurStory from "./pages/OurStory";
+import Registry from "./pages/Registry";
+import RSVP from "./pages/RSVP";
+import Venue from "./pages/Venue";
 import Navbar from "./components/Navbar";
 
 const App: React.FC = () => {
@@ -11,10 +14,16 @@ const App: React.FC = () => {
     switch (currentPage) {
       case "home":
         return <Home />;
-      case "about":
-        return <About />;
-      case "contact":
-        return <Contact />;
+      case "itiniery":
+        return <Itinierary />;
+      case "our-story":
+        return <OurStory />;
+      case "registry":
+        return <Registry />;
+      case "rsvp":
+        return <RSVP />;
+      case "venue":
+        return <Venue />;
       default:
         return <Home />;
     }

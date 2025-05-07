@@ -1,8 +1,8 @@
 const Home: React.FC = () => {
   return (
     <div className="text-center">
-      <h1 className="text-4xl font-bold mb-4">Welcome to Home</h1>
-      <p className="text-lg">This is the home page of our React app.</p>
+      <h1 className="text-[101px] font-bold mb-4">Christabel & Ayodeji</h1>
+      <p className="text-lg">July 15, 2022 - Boise, Idaho</p>
     </div>
   );
 };
