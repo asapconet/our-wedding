@@ -11,7 +11,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
-  
+
 const navItems: { label: string; page: SectionKey }[] = [
   { label: "Home", page: "home" },
   { label: "Our Story", page: "our-story" },
@@ -22,7 +22,7 @@ const navItems: { label: string; page: SectionKey }[] = [
 ];
 
   return (
-    <nav className="fixed top-1/2 left-0 transform -translate-y-1/2">
+    <nav className="fixed top-1/2 left-0 transform -translate-y-1/2 z-10">
       <ul className="flex flex-col pl-8 space-y-4 font-[400] text-[22px] font-montserrat text-[#2B1105]">
         {navItems.map(({ label, page }) => (
           <li key={page}>

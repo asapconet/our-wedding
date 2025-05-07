@@ -23,9 +23,9 @@ const scrollToSection = (key: SectionKey) => {
 
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="">
       <Navbar onNavigate={scrollToSection} />
-      <main className="container mx-auto p-4 space-y-20">
+      <main className="px-auto p-4 space-y-20">
         <section ref={sectionsRef.home}>
           <Home />
         </section>

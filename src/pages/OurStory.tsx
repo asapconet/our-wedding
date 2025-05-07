@@ -1,6 +1,8 @@
+import DesertShot from "../assets/images/desertPhoto.png";
+
 const OurStory: React.FC = () => {
   return (
-    <div className=" flex flex-col justify-center items-center h-[1150px]">
+    <div className=" flex flex-col pt-10 items-center h-[1150px]">
       <div className="text-center flex flex-col justify-between h-[250px] mb-10 max-w-[800px]">
         <h1 className="text-4xl font-[400] text-[3.5rem] text-[#2B1105] mb-4">
           Our Story
@@ -19,7 +21,11 @@ const OurStory: React.FC = () => {
           Faucibus sed egestas mollis vivamus et sed sed.
         </p>
       </div>
-      <div className="px-[507px] h-[486px] bg-[#97917A]"></div>
+      <img
+        src={DesertShot}
+        alt="desert meeting"
+        className="max-w-[1007px] h-[566px]"
+      />
     </div>
   );
 };

@@ -1,24 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montaga&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-  font-family: 'Montaga', serif;
+  font-family: "Montaga", serif;
+}
+
+.mainBg {
+  background-image: url("/src/assets/images/allison.png");
+  background: cover;
+  width: 1440;
+  height: 900;
+  opacity: 0.6;
 }
 
 .wedding-title {
-  font-family: 'Great Vibes', cursive;
+  font-family: "Great Vibes", cursive;
   font-size: 4rem;
   font-weight: normal;
 }
 
 .wedding-subtitle {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
 }
