@@ -1,8 +1,25 @@
 const OurStory: React.FC = () => {
   return (
-    <div className="text-center">
-      <h1 className="text-4xl font-bold mb-4">About Us</h1>
-      <p className="text-lg">Learn more about our mission and vision.</p>
+    <div className=" flex flex-col justify-center items-center h-[1150px]">
+      <div className="text-center flex flex-col justify-between h-[250px] mb-10 max-w-[800px]">
+        <h1 className="text-4xl font-[400] text-[3.5rem] text-[#2B1105] mb-4">
+          Our Story
+        </h1>
+        <p className="text-[1.1rem] font-[400] text-left leading-5 ">
+          Feugiat pretium egestas enim blandit purus euismod. Feugiat magna
+          aliquam lectus lectus eu amet. Eros, accumsan purus enim nascetur quam
+          diam felis, fringilla varius. Quis purus nisl orci eu, ultrices.{" "}
+          <br />
+          <br />
+          Purus pretium egestas ultricies tempus sit elit. Maecenas pellentesque
+          sit eros vitae. Maecenas suspendisse tincidunt ullamcorper justo neque
+          quis et, laoreet. Vitae lacus, aliquet lorem mauris, sit dolor
+          sodales. Nullam quam quis lorem dui tristique massa enim. <br />
+          <br />
+          Faucibus sed egestas mollis vivamus et sed sed.
+        </p>
+      </div>
+      <div className="px-[507px] h-[486px] bg-[#97917A]"></div>
     </div>
   );
 };

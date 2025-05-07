@@ -1,16 +1,25 @@
+export type SectionKey =
+  | "home"
+  | "our-story"
+  | "venue"
+  | "itinierary"
+  | "registry"
+  | "rsvp";
+
 interface NavbarProps {
-  setCurrentPage: (page: string) => void;
+  onNavigate: (sectionId: SectionKey) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
-  const navItems = [
-    { label: "Home", page: "home" },
-    { label: "Our Story", page: "our-story" },
-    { label: "Venue", page: "venue" },
-    { label: "Itinerary", page: "itinierary" },
-    { label: "Registry", page: "registry" },
-    { label: "RSVP", page: "rsvp" },
-  ];
+const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
+  
+const navItems: { label: string; page: SectionKey }[] = [
+  { label: "Home", page: "home" },
+  { label: "Our Story", page: "our-story" },
+  { label: "Venue", page: "venue" },
+  { label: "Itinerary", page: "itinierary" },
+  { label: "Registry", page: "registry" },
+  { label: "RSVP", page: "rsvp" },
+];
 
   return (
     <nav className="fixed top-1/2 left-0 transform -translate-y-1/2">
@@ -19,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
           <li key={page}>
             <button
               className="hover:underline focus:outline-none"
-              onClick={() => setCurrentPage(page)}
+              onClick={() => onNavigate(page)}
             >
               {label}
             </button>
