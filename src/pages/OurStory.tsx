@@ -3,11 +3,11 @@ import DesertShot from "../assets/images/desertPhoto.png";
 const OurStory: React.FC = () => {
   return (
     <div className=" flex flex-col pt-10 items-center h-[1150px]">
-      <div className="text-center flex flex-col justify-between h-[250px] mb-10 max-w-[800px]">
-        <h1 className="text-4xl font-[400] text-[3.5rem] text-[#2B1105] mb-4">
+      <div className="text-center flex flex-col justify-between h-[355px] mb-10 max-w-[800px]">
+        <h1 className="text-4xl font-[400] text-[3.5rem] text-neu-400 mb-4">
           Our Story
         </h1>
-        <p className="text-[1.1rem] font-[400] text-left leading-5 ">
+        <p className="text-[1.1rem] font-medium text-left text-neu-400 leading-[160%] max-h-[235px] h-full ">
           Feugiat pretium egestas enim blandit purus euismod. Feugiat magna
           aliquam lectus lectus eu amet. Eros, accumsan purus enim nascetur quam
           diam felis, fringilla varius. Quis purus nisl orci eu, ultrices.{" "}

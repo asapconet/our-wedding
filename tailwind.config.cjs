@@ -5,13 +5,19 @@ module.exports = {
     extend: {
       fontFamily: {
         great: ['"Great Vibes"', "cursive"],
-        montserrat: ['"Montserrat"', "sans-serif"],
+        mon: ['"Montserrat"', "sans-serif"],
+      },
+      backgroundImage: {
+        mainBg: 'url("/src/assets/images/allison.png")',
       },
       colors: {
         pri: "#D88714",
         sec: "#FAEBD5",
         ter: "#982546",
+        lite: "#FCF9F7",
+        gold:'#97917A',
         neu: {
+          100: "#FCF9F7",
           400: "#2B1105",
         },
         bg: "#FFFFFF",

@@ -3,7 +3,7 @@ export type SectionKey =
   | "our-story"
   | "venue"
   | "itinierary"
-  | "registry"
+  | "party"
   | "rsvp";
 
 interface NavbarProps {
@@ -17,7 +17,7 @@ const navItems: { label: string; page: SectionKey }[] = [
   { label: "Our Story", page: "our-story" },
   { label: "Venue", page: "venue" },
   { label: "Itinerary", page: "itinierary" },
-  { label: "Registry", page: "registry" },
+  { label: "WeddingParty", page: "party" },
   { label: "RSVP", page: "rsvp" },
 ];
 
