@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Home from "./pages/Home";
-import Itinierary from "./pages/Itinierary";
+import Itinerary from "./pages/Itinerary";
 import OurStory from "./pages/OurStory";
 import WeddingParty from "./pages/WeddingParty";
 import RSVP from "./pages/RSVP";
@@ -12,7 +12,7 @@ const App: React.FC = () => {
     home: useRef<HTMLElement>(null),
     "our-story": useRef<HTMLElement>(null),
     venue: useRef<HTMLElement>(null),
-    itinierary: useRef<HTMLElement>(null),
+    itinerary: useRef<HTMLElement>(null),
     party: useRef<HTMLElement>(null),
     rsvp: useRef<HTMLElement>(null),
   };
@@ -37,8 +37,8 @@ const App: React.FC = () => {
         <section ref={sectionsRef.venue}>
           <Venue />
         </section>
-        <section ref={sectionsRef.itinierary}>
-          <Itinierary />
+        <section ref={sectionsRef.itinerary}>
+          <Itinerary />
         </section>
         <section ref={sectionsRef.rsvp}>
           <RSVP />

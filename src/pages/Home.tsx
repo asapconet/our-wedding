@@ -1,9 +1,16 @@
-const Home: React.FC = () => {
+const Home = () => {
   return (
-    <div className="z-10 flex justify-end flex-col text-center h-[900px]
-     text-lite bg-mainBg bg-cover bg-center w-full">
-      <h1 className="text-[6.31rem] font-bold mb-4">Christabel & Ayodeji</h1>
-      <p className="text-lg">30th & 31st May, 2025 - Zariah, Kaduna</p>
+    <div
+      className="relative z-10 flex flex-col justify-end items-center
+     text-center min-h-[700px] sm:min-h-[800px] md:min-h-[930px]
+      text-lite bg-mainBg bg-cover bg-center w-full px-4 sm:px-6 pb-20"
+    >
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight ">
+        Christabel & Ayodeji
+      </h1>
+      <p className="text-base sm:text-lg md:text-xl">
+        30th & 31st May, 2025 - Zariah, Kaduna
+      </p>
     </div>
   );
 };

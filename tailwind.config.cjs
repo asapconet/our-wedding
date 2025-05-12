@@ -9,6 +9,7 @@ module.exports = {
       },
       backgroundImage: {
         mainBg: 'url("/src/assets/images/allison.png")',
+        plantBg: 'url("/src/assets/images/plant.png")',
       },
       colors: {
         pri: "#D88714",

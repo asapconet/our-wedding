@@ -1,30 +1,29 @@
 import DesertShot from "../assets/images/desertPhoto.png";
 
-const OurStory: React.FC = () => {
+const OurStory = () => {
   return (
-    <div className=" flex flex-col pt-10 items-center h-[1150px]">
-      <div className="text-center flex flex-col justify-between h-[355px] mb-10 max-w-[800px]">
-        <h1 className="text-4xl font-[400] text-[3.5rem] text-neu-400 mb-4">
+    <div className="flex flex-col items-center py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+      <div className="text-center max-w-4xl mx-auto mb-8 md:mb-12">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-6">
           Our Story
         </h1>
-        <p className="text-[1.1rem] font-medium text-left text-neu-400 leading-[160%] max-h-[235px] h-full ">
+        <p className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left">
           Feugiat pretium egestas enim blandit purus euismod. Feugiat magna
           aliquam lectus lectus eu amet. Eros, accumsan purus enim nascetur quam
-          diam felis, fringilla varius. Quis purus nisl orci eu, ultrices.{" "}
-          <br />
-          <br />
+          diam felis, fringilla varius. Quis purus nisl orci eu, ultrices.
+          <br /><br />
           Purus pretium egestas ultricies tempus sit elit. Maecenas pellentesque
           sit eros vitae. Maecenas suspendisse tincidunt ullamcorper justo neque
           quis et, laoreet. Vitae lacus, aliquet lorem mauris, sit dolor
-          sodales. Nullam quam quis lorem dui tristique massa enim. <br />
-          <br />
+          sodales. Nullam quam quis lorem dui tristique massa enim.
+          <br /><br />
           Faucibus sed egestas mollis vivamus et sed sed.
         </p>
       </div>
       <img
         src={DesertShot}
-        alt="desert meeting"
-        className="max-w-[1007px] h-[566px]"
+        alt="Desert meeting"
+        className="w-full max-w-[1007px] sm:max-w-[1200px] h-auto object-cover"
       />
     </div>
   );
