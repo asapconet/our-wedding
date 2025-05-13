@@ -23,8 +23,10 @@
     "paths": {
       "@components/*": ["components/*"],
       "@types/*": ["types/*"],
-      "@assets/*": ["utils/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@constants/*": ["constants/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "include": ["src"]

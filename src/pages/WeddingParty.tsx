@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Groom from "@assets/images/groom.png";
+import useScrollAnimation from "@hooks/useScroll";
+import { useFixedRefs } from "@hooks/useFixedRefs";
 
 const WeddingParty = () => {
   const [activeTab, setActiveTab] = useState("groomsmen");
@@ -20,6 +22,16 @@ const WeddingParty = () => {
     { name: "Ava", image: "/api/placeholder/200/200" },
   ];
 
+  const refs = useFixedRefs<HTMLDivElement>(5);
+
+  useScrollAnimation(refs, {
+    animationClass: "slide-up",
+    delayIncrement: 100,
+    threshold: 0.1,
+  });
+
+  const people = activeTab === "groomsmen" ? groomsmen : bridesmaids;
+
   return (
     <div className="bg-gold text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -31,7 +43,7 @@ const WeddingParty = () => {
           <div className="flex w-full max-w-lg justify-center gap-4 sm:gap-6">
             <button
               onClick={() => setActiveTab("groomsmen")}
-              className={`text-2xl sm:text-3xl md:text-4xl font-normal px-4 py-2 transition-all duration-200 ${
+              className={`text-2xl sm:text-3xl md:text-4xl font-normal px-4 py-2 transition-all duration-200 animate-fade-in ${
                 activeTab === "groomsmen"
                   ? "border-b-2 border-white text-white"
                   : "text-neu-100 hover:text-white opacity-70 hover:opacity-100"
@@ -53,24 +65,26 @@ const WeddingParty = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-          {(activeTab === "groomsmen" ? groomsmen : bridesmaids).map(
-            (person, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 mb-4 overflow-hidden border-2 border-white rounded-sm">
-                  <img
-                    src={person.image}
-                    alt={`${person.name} - ${
-                      activeTab === "groomsmen" ? "Groomsman" : "Bridesmaid"
-                    }`}
-                    className="w-full h-full object-cover grayscale"
-                  />
-                </div>
-                <p className="text-lg sm:text-xl md:text-2xl text-neu-100 text-center">
-                  {person.name}
-                </p>
+          {people.map((person, index) => (
+            <div
+              key={index}
+              ref={refs[index]}
+              className="flex flex-col items-center"
+            >
+              <div className="w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 mb-4 overflow-hidden border-2 border-white rounded-sm">
+                <img
+                  src={person.image}
+                  alt={`${person.name} - ${
+                    activeTab === "groomsmen" ? "Groomsman" : "Bridesmaid"
+                  }`}
+                  className="w-full h-full object-cover grayscale"
+                />
               </div>
-            )
-          )}
+              <p className="text-lg sm:text-xl md:text-2xl text-neu-100 text-center">
+                {person.name}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
