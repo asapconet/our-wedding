@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { typeWriter } from "../utils/typesWriter";
+import { galleryImages, paragraphs } from "@constants/index";
+import { ImageGallery } from "@components/ImageLigthbox";
 import DesertShot from "../assets/images/desertPhoto.png";
-import { paragraphs } from "@constants/index";
 
 const OurStory = () => {
-  const [typedTitle, setTypedTitle] = useState("");
+  const [typedTitle, setTypedTitle] = useState<string>("");
   const [typedParagraphs, setTypedParagraphs] = useState<string[]>([]);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const animateContent = async () => {
@@ -16,7 +17,6 @@ const OurStory = () => {
           setTypedTitle(currentText);
         },
       });
-
       const typedParas: string[] = [];
       for (const para of paragraphs) {
         await new Promise((resolve) => setTimeout(resolve, 200));
@@ -50,7 +50,7 @@ const OurStory = () => {
   }, []);
 
   return (
-    <div
+    <section
       ref={sectionRef}
       className="flex flex-col items-center py-12 md:py-16 px-4 sm:px-6 lg:px-8"
     >
@@ -72,12 +72,21 @@ const OurStory = () => {
           ))}
         </p>
       </div>
-      <img
-        src={DesertShot}
-        alt="Desert meeting"
-        className="w-full max-w-[1007px] sm:max-w-[1200px] h-auto object-cover animate-slide-in-left"
-      />
-    </div>
+
+      <div className="w-full max-w-4xl mx-auto animate-slide-in-left">
+        <h2 className="text-2xl md:text-3xl font-normal text-neu-400 mb-6 text-center">
+          Our Journey in Pictures
+        </h2>
+
+        <img
+          src={DesertShot}
+          alt="Desert meeting"
+          className="w-full max-w-[1007px] mx-auto h-auto object-cover mb-8"
+        />
+
+        <ImageGallery images={galleryImages} />
+      </div>
+    </section>
   );
 };
 

@@ -19,8 +19,8 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
     { label: "Home", page: "home" },
     { label: "Our Story", page: "our-story" },
     { label: "Venue", page: "venue" },
-    { label: "Itinerary", page: "itinerary" },
     { label: "Wedding Party", page: "party" },
+    { label: "Itinerary", page: "itinerary" },
     { label: "RSVP", page: "rsvp" },
   ];
 

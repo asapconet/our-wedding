@@ -2,10 +2,11 @@ import VenueShot from "@assets/images/venue.png";
 import { typeWriter } from "@utils/typesWriter";
 import { useEffect, useState } from "react";
 
+export const fullDescription =
+  "Feugiat pretium egestas enim blandit purus euismod. Feugiat magna aliquam lectus lectus eu amet. Eros, accumsan purus enim nascetur quam diam felis, fringilla varius. Quis purus nisl orci eu, ultrices. Purus pretium egestas ultricies tempus sit elit. Maecenas pellentesque sit eros vitae. Maecenas suspendisse tincidunt ullamcorper justo neque quis et, laoreet.";
+
 const Venue = () => {
   const [description, setDescription] = useState("");
-  const fullDescription =
-    "Feugiat pretium egestas enim blandit purus euismod. Feugiat magna aliquam lectus lectus eu amet. Eros, accumsan purus enim nascetur quam diam felis, fringilla varius. Quis purus nisl orci eu, ultrices. Purus pretium egestas ultricies tempus sit elit. Maecenas pellentesque sit eros vitae. Maecenas suspendisse tincidunt ullamcorper justo neque quis et, laoreet.";
 
   useEffect(() => {
     typeWriter(fullDescription, {
@@ -17,14 +18,14 @@ const Venue = () => {
   return (
     <div className="relative px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center py-12 md:py-16">
-        {/* Venue Image with Fade-In Animation */}
+        
         <img
           src={VenueShot}
           alt="Desert meeting venue"
           className="w-full max-w-[380px] sm:max-w-[500px] md:max-w-[600px] h-auto object-cover animate-fadeIn"
         />
 
-        {/* Location Section */}
+        
         <div className="text-center max-w-4xl mx-auto my-8 md:my-12 animate-slideUp">
           <p className="text-lg md:text-xl text-pri font-normal mb-6">
             The Location
@@ -45,7 +46,7 @@ const Venue = () => {
           style={{ animationDelay: "0.3s" }}
         />
 
-        {/* Accommodations Section */}
+
         <div className="text-center max-w-7xl mx-auto my-12 md:my-16 animate-slideUp">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-10">
             Accommodations
