@@ -64,7 +64,7 @@ const Itinerary = () => {
   return (
     <div
       ref={sectionRef}
-      className="min-h-screen bg-gray-50 text-gray-800 py-8 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen bg-gray-50 text-gray-800 py-8 px-4 sm:px-6 lg:px-8 relative"
     >
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-normal mb-12 text-center animate-fade-in">
@@ -127,8 +127,10 @@ const Itinerary = () => {
           </div>
         </div>
 
-        <div className="bg-plantBg h-64 sm:h-80 md:h-96 w-full max-w-[350px] sm:max-w-[350px]
-         opacity-15 mt-8 md:mt-12 bg-fit bg-no-repeat animate-fade-in" />
+        <div
+          className="absolute bottom-5 bg-plantBg h-64 sm:h-80 md:h-96 w-full max-w-[350px] sm:max-w-[350px]
+         opacity-15 mt-8 bg-fit bg-no-repeat animate-fade-in left-1/2 transform -translate-x-1/2"
+        />
       </div>
     </div>
   );

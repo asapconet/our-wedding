@@ -8,7 +8,7 @@ module.exports = {
         mon: ['"Montserrat"', "sans-serif"],
       },
       backgroundImage: {
-        mainBg: 'url("/src/assets/images/allison.png")',
+        mainBg: 'url("/src/assets/images/culture.jpg")',
         plantBg: 'url("/src/assets/images/plant.png")',
       },
       colors: {

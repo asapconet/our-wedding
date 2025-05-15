@@ -8,6 +8,7 @@
     "build:types": "tsc -p tsconfig.app.json",
     "build": "vite build && npm run build:types",
     "preview": "vite preview",
+    "start": "vite start",
     "lint": "eslint src --ext ts,tsx",
     "format": "prettier --write src"
   },

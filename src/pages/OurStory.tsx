@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { typeWriter } from "../utils/typesWriter";
 import { galleryImages, paragraphs } from "@constants/index";
 import { ImageGallery } from "@components/ImageLigthbox";
-import DesertShot from "../assets/images/desertPhoto.png";
 
 const OurStory = () => {
   const [typedTitle, setTypedTitle] = useState<string>("");
@@ -79,7 +78,9 @@ const OurStory = () => {
         </h2>
 
         <img
-          src={DesertShot}
+          src={
+            "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747325656/samples/coffee.jpg"
+          }
           alt="Desert meeting"
           className="w-full max-w-[1007px] mx-auto h-auto object-cover mb-8"
         />

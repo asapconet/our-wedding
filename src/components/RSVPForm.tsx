@@ -1,4 +1,5 @@
-import { useState,  type ChangeEvent, type FormEvent,  } from "react";
+import { BackgroundIcon } from "../assets/bg";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 
 interface FormData {
   firstName: string;
@@ -207,16 +208,10 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
           </form>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 w-full h-64 opacity-10 pointer-events-none">
+      <div className="absolute bottom-80 left-0 right-0 w-full h-64 opacity-5 pointer-events-none">
         <div className="relative w-full h-full">
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill="#CCCCCC"
-                d="M37.9,-48.2C49.1,-39.2,58.5,-27.7,63.2,-14C67.9,-0.4,67.8,15.4,61.9,29.5C55.9,43.7,44.1,56,29.6,64.2C15.1,72.3,-2.1,76.3,-18.8,73.6C-35.4,70.9,-51.7,61.5,-63.5,47.4C-75.4,33.4,-82.9,14.7,-81.5,-3.1C-80.1,-20.9,-69.9,-37.8,-56.2,-47.5C-42.6,-57.1,-25.5,-59.5,-10.8,-57.2C3.9,-54.9,26.7,-57.1,37.9,-48.2Z"
-                transform="translate(100 100)"
-              />
-            </svg>
+          <div className="absolute bottom-0 left-1/3 transform -translate-x-1/2 w-96 h-96">
+            <BackgroundIcon />
           </div>
         </div>
       </div>
