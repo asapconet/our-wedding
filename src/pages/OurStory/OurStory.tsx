@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { typeWriter } from "../utils/typesWriter";
+import { typeWriter } from "../../utils/typesWriter";
 import { galleryImages, paragraphs } from "@constants/index";
 import { ImageGallery } from "@components/ImageLigthbox";
 
@@ -73,10 +73,6 @@ const OurStory = () => {
       </div>
 
       <div className="w-full max-w-4xl mx-auto animate-slide-in-left">
-        <h2 className="text-2xl md:text-3xl font-normal text-neu-400 mb-6 text-center">
-          Our Journey in Pictures
-        </h2>
-
         <img
           src={
             "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747325656/samples/coffee.jpg"

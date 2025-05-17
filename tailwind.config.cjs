@@ -8,7 +8,9 @@ module.exports = {
         mon: ['"Montserrat"', "sans-serif"],
       },
       backgroundImage: {
-        mainBg: 'url("/src/assets/images/culture.jpg")',
+        mainBg:
+          "url('https://res.cloudinary.com/dsz3obfpx/image/upload/v1747499197/BW_rcujnr.jpg')",
+        mainBg1: 'url("/src/assets/images/culture.jpg")',
         plantBg: 'url("/src/assets/images/plant.png")',
       },
       colors: {
