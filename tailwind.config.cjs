@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         great: ['"Great Vibes"', "cursive"],
-        mon: ['"Montserrat"', "sans-serif"],
+        mon: ['"Montaga"', "serif"],
       },
       backgroundImage: {
         mainBg:

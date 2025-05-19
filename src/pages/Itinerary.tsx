@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { days, itineraryItems } from "@constants/index";
 import type { ItineraryItem } from "../types/index";
 import { typeWriter } from "../utils/typesWriter";
-import useTypewriterOnScroll from "@hooks/index";
+import useTypewriterOnScroll from "@hooks/useTypeWritter";
 
 const Itinerary = () => {
   const [activeDay, setActiveDay] = useState("Friday, July 11");

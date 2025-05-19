@@ -1,14 +1,11 @@
-import { useEffect, useRef, useState} from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import Home from "./pages/Home";
 import Itinerary from "./pages/Itinerary";
 import WeddingParty from "./pages/WeddingParty";
 import RSVP from "./pages/RSVP";
 import Venue from "./pages/Venue";
 import Navbar, { type SectionKey } from "./components/Navbar";
-import OurStoryPage from "@pages/OurStory";
 import OurStory from "@pages/OurStory/OurStory";
-import { AppProvider } from "./context/appContext";
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState<SectionKey>("home");
@@ -21,7 +18,6 @@ const App = () => {
     rsvp: null,
   });
 
-  // Handle navigation
   const handleNavigate = (sectionId: SectionKey) => {
     setCurrentSection(sectionId);
     const targetSection = sectionRefs.current[sectionId];
@@ -30,80 +26,81 @@ const App = () => {
     }
   };
 
-  // Track scroll position to update active section
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 3;
-
-      // Find which section is currently in view
       let activeSection: SectionKey = "home";
       Object.entries(sectionRefs.current).forEach(([key, ref]) => {
         if (ref && scrollPosition >= ref.offsetTop) {
           activeSection = key as SectionKey;
         }
       });
-
-      // Update current section if changed
       if (activeSection !== currentSection) {
         setCurrentSection(activeSection);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial position
-
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [currentSection]);
 
-  return (
-    <div className="font-serif">
-      <Navbar onNavigate={handleNavigate} currentSection={currentSection} />
+  const activeSectionRef = sectionRefs.current[currentSection];
 
+  return (
+    <div>
+      <Navbar
+        onNavigate={handleNavigate}
+        cocurrentSection={currentSection}
+        sectionRef={activeSectionRef}
+      />
       <div
-        ref={(el) => (sectionRefs.current["home"] = el)}
-        className="bg-black" // Dark background for home section
+        ref={(el) => {
+          sectionRefs.current["home"] = el;
+        }}
+        className="min-h-screen bg-mainBg bg-cover bg-center"
       >
         <Home />
       </div>
-
       <div
-        ref={(el) => (sectionRefs.current["our-story"] = el)}
-        className="min-h-screen bg-white" // Light background for "Our Story"
+        ref={(el) => {
+          sectionRefs.current["our-story"] = el;
+        }}
+        className="min-h-screen bg-white"
       >
-        <OurStory/>
-        <h2 className="text-4xl font-bold text-center pt-20">Our Story</h2>
+        <OurStory />
       </div>
-
       <div
-        ref={(el) => (sectionRefs.current["venue"] = el)}
-        className="min-h-screen bg-gray-100" // Light background for Venue
+        ref={(el) => {
+          sectionRefs.current["venue"] = el;
+        }}
+        className="min-h-screen bg-gray-100"
       >
-        <h2 className="text-4xl font-bold text-center pt-20">Venue</h2>
-        <Venue/>
+        <Venue />
       </div>
-
       <div
-        ref={(el) => (sectionRefs.current["party"] = el)}
-        className="min-h-screen bg-white" // Light background
-      ><WeddingParty/>
-      </div>
-
-      <div
-        ref={(el) => (sectionRefs.current["itinerary"] = el)}
-        className="min-h-screen bg-gray-100" // Light background
+        ref={(el) => {
+          sectionRefs.current["party"] = el;
+        }}
+        className="min-h-screen bg-gold"
       >
-        {/* Itinerary content */}
-        <h2 className="text-4xl font-bold text-center pt-20">Itinerary</h2>
+        <WeddingParty />
       </div>
-
       <div
-        ref={(el) => (sectionRefs.current["rsvp"] = el)}
-        className="min-h-screen bg-black" // Dark background
+        ref={(el) => {
+          sectionRefs.current["itinerary"] = el;
+        }}
+        className="min-h-screen bg-gray-50"
       >
-        {/* RSVP content */}
-        <h2 className="text-4xl font-bold text-center pt-20 text-white">
-          RSVP
-        </h2>
+        <Itinerary />
+      </div>
+      <div
+        ref={(el) => {
+          sectionRefs.current["rsvp"] = el;
+        }}
+        className="min-h-screen bg-white"
+      >
+        <RSVP />
       </div>
     </div>
   );
