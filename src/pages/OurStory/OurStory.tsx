@@ -2,31 +2,39 @@ import { useState, useEffect, useRef } from "react";
 import { typeWriter } from "../../utils/typesWriter";
 import { galleryImages, paragraphs } from "@constants/index";
 import { ImageGallery } from "@components/ImageLigthbox";
+import { Link } from "react-router-dom";
 
 const OurStory = () => {
   const [typedTitle, setTypedTitle] = useState<string>("");
-  const [typedParagraphs, setTypedParagraphs] = useState<string[]>([]);
+  const [typedText, setTypedText] = useState<string>("");
+  const [isTypingComplete, setIsTypingComplete] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement | null>(null);
+
+  const fullText = paragraphs.join(" ");
+  const words = fullText.split(" ");
+  const truncatedText = words.slice(0, 150).join(" ");
+  const displayText =
+    words.length > 150 ? `${truncatedText}...` : truncatedText;
 
   useEffect(() => {
     const animateContent = async () => {
       await typeWriter("Our Story", {
-        speed: 50,
+        speed: 25,
         onUpdate: (currentText: string) => {
           setTypedTitle(currentText);
         },
       });
-      const typedParas: string[] = [];
-      for (const para of paragraphs) {
-        await new Promise((resolve) => setTimeout(resolve, 200));
-        await typeWriter(para, {
-          speed: 10,
-          onUpdate: (currentText: string) => {
-            typedParas[paragraphs.indexOf(para)] = currentText;
-            setTypedParagraphs([...typedParas]);
-          },
-        });
-      }
+      await typeWriter(displayText, {
+        speed: 5,
+        onUpdate: (currentText: string) => {
+          setTypedText(currentText);
+        },
+      });
+      // Estimate animation duration: text length * speed + buffer
+      const animationDuration = displayText.length * 5 + 200;
+      setTimeout(() => {
+        setIsTypingComplete(true);
+      }, animationDuration);
     };
 
     const observer = new IntersectionObserver(
@@ -46,7 +54,7 @@ const OurStory = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [displayText]);
 
   return (
     <section
@@ -57,32 +65,21 @@ const OurStory = () => {
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-6 animate-fade-in">
           {typedTitle}
         </h1>
-        <p className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left">
-          {paragraphs.map((_, index) => (
-            <span key={index}>
-              {typedParagraphs[index] || ""}
-              {index < paragraphs.length - 1 && (
-                <>
-                  <br />
-                  <br />
-                </>
-              )}
-            </span>
-          ))}
-        </p>
+        {isTypingComplete ? (
+          <Link
+            to="/our-story-full"
+            className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left block hover:text-blue-500 transition-colors"
+          >
+            {typedText}
+          </Link>
+        ) : (
+          <p className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left">
+            {typedText}
+          </p>
+        )}
       </div>
 
-      <div className="w-full max-w-4xl mx-auto animate-slide-in-left">
-        <img
-          src={
-            "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747325656/samples/coffee.jpg"
-          }
-          alt="Desert meeting"
-          className="w-full max-w-[1007px] mx-auto h-auto object-cover mb-8"
-        />
-
-        <ImageGallery images={galleryImages} />
-      </div>
+      <ImageGallery images={galleryImages} />
     </section>
   );
 };

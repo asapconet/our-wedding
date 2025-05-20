@@ -6,6 +6,7 @@ import RSVP from "./pages/RSVP";
 import Venue from "./pages/Venue";
 import Navbar, { type SectionKey } from "./components/Navbar";
 import OurStory from "@pages/OurStory/OurStory";
+import ErrorBoundary from "./ErrorBoundary";
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState<SectionKey>("home");
@@ -45,15 +46,10 @@ const App = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [currentSection]);
 
-  const activeSectionRef = sectionRefs.current[currentSection];
 
   return (
-    <div>
-      <Navbar
-        onNavigate={handleNavigate}
-        cocurrentSection={currentSection}
-        sectionRef={activeSectionRef}
-      />
+    <ErrorBoundary>
+      <Navbar onNavigate={handleNavigate} />
       <div
         ref={(el) => {
           sectionRefs.current["home"] = el;
@@ -102,7 +98,7 @@ const App = () => {
       >
         <RSVP />
       </div>
-    </div>
+    </ErrorBoundary>
   );
 };
 
