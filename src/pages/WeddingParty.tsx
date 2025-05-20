@@ -33,7 +33,7 @@ const WeddingParty = () => {
   const people = activeTab === "groomsmen" ? groomsmen : bridesmaids;
 
   return (
-    <div className="bg-brown-500 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-brown-500 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-brown">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center text-lg sm:text-xl md:text-2xl font-normal mb-8">
           The Wedding Party

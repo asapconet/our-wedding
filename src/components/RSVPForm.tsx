@@ -208,9 +208,9 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
           </form>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-72 bg-black left-0 w-full h-64 sm:h-72 lg:h-44 opacity-5 pointer-events-none z-0">
+      <div className="absolute inset-x-0 bottom-72 left-0 w-full h-64 sm:h-72 lg:h-44 opacity-5 pointer-events-none z-0">
         <div className="relative w-full h-full">
-          <div className="absolute bottom-44 left-80 transform translate-x-1/2 w-48 sm:w-64 lg:w-80 h-48 sm:h-64 lg:h-80">
+          <div className="absolute bottom-44 -left-20 xl:left-80 transform translate-x-1/2 w-48 sm:w-64 lg:w-80 h-48 sm:h-64 lg:h-80">
             <BackgroundIcon />
           </div>
         </div>

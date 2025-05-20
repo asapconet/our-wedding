@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export type SectionKey =
   | "home"
   | "our-story"
+  | "gallery"
   | "venue"
   | "itinerary"
   | "party"
@@ -18,6 +20,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
   const navItems: { label: string; page: SectionKey }[] = [
     { label: "Home", page: "home" },
     { label: "Our Story", page: "our-story" },
+    { label: "Gallery", page: "gallery" },
     { label: "Venue", page: "venue" },
     { label: "Wedding Party", page: "party" },
     { label: "Itinerary", page: "itinerary" },
@@ -68,15 +71,25 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
         <ul className="flex flex-col items-center space-y-4 py-4 font-montserrat text-lg text-[#2B1105]">
           {navItems.map(({ label, page }) => (
             <li key={page}>
-              <button
-                className="hover:underline focus:outline-none focus:underline"
-                onClick={() => {
-                  onNavigate(page);
-                  setIsMenuOpen(false);
-                }}
-              >
-                {label}
-              </button>
+              {page === "our-story" ? (
+                <Link
+                  to="/our-story"
+                  className="hover:underline focus:outline-none focus:underline"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {label}
+                </Link>
+              ) : (
+                <button
+                  className="hover:underline focus:outline-none focus:underline"
+                  onClick={() => {
+                    onNavigate(page);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  {label}
+                </button>
+              )}
             </li>
           ))}
         </ul>
@@ -86,12 +99,21 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
         <ul className="flex flex-col space-y-4 font-montserrat text-xl lg:text-2xl text-[#2B1105]">
           {navItems.map(({ label, page }) => (
             <li key={page}>
-              <button
-                className="hover:underline focus:outline-none focus:underline transition-all duration-200"
-                onClick={() => onNavigate(page)}
-              >
-                {label}
-              </button>
+              {page === "our-story" ? (
+                <Link
+                  to="/our-story"
+                  className="hover:underline focus:outline-none focus:underline transition-all duration-200"
+                >
+                  {label}
+                </Link>
+              ) : (
+                <button
+                  className="hover:underline focus:outline-none focus:underline transition-all duration-200"
+                  onClick={() => onNavigate(page)}
+                >
+                  {label}
+                </button>
+              )}
             </li>
           ))}
         </ul>

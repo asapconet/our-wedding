@@ -1,22 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import { typeWriter } from "../../utils/typesWriter";
-import { galleryImages, paragraphs } from "@constants/index";
-import { ImageGallery } from "@components/ImageLigthbox";
+import {paragraphs } from "@constants/index";
 import { Link } from "react-router-dom";
 
 const OurStory = () => {
-  const [typedTitle, setTypedTitle] = useState<string>("");
-  const [typedText, setTypedText] = useState<string>("");
-  const [isTypingComplete, setIsTypingComplete] = useState<boolean>(false);
-  const [hasStartedAnimation, setHasStartedAnimation] =
-    useState<boolean>(false);
-  const sectionRef = useRef<HTMLElement | null>(null);
+  const [typedTitle, setTypedTitle] = useState("");
+  const [typedText, setTypedText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [hasStartedAnimation, setHasStartedAnimation] = useState(false);
+  const sectionRef = useRef(null);
 
   const fullText = paragraphs.join(" ");
   const words = fullText.split(" ");
   const truncatedText = words.slice(0, 150).join(" ");
-  const displayText =
-    words.length > 150 ? `${truncatedText}...` : truncatedText;
+  const displayText = words.length > 150 ? truncatedText : truncatedText;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,30 +76,31 @@ const OurStory = () => {
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col items-center py-12 md:py-16"
+      className="flex flex-col items-center pt-12 md:pt-16"
     >
       <div className="text-center max-w-4xl mx-auto mb-8 md:mb-12 min-h-[255px] px-2">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-6 animate-fade-in">
           {typedTitle || "Our Story"}
         </h1>
 
-        <div className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left">
-          {typedText}
-
-          {isTypingComplete && words.length > 150 && (
-            <div className="mt-4">
-              <Link
-                to="/our-story-full"
-                className="inline-block px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors"
-              >
-                Read Full Story
-              </Link>
-            </div>
+        <div className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-center">
+          {isTypingComplete ? (
+            <Link
+              to="/our-story"
+              className="text-neu-400 hover:text-brown transition-colors cursor-pointer"
+            >
+              {typedText}
+              {words.length > 150 && (
+                <span className="text-blue-500 font-bold ml-1">...</span>
+              )}
+            </Link>
+          ) : (
+            typedText
           )}
         </div>
       </div>
 
-      <ImageGallery images={galleryImages} />
+      
     </section>
   );
 };

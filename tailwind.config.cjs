@@ -19,6 +19,7 @@ module.exports = {
         ter: "#982546",
         lite: "#FCF9F7",
         gold: "#97917A",
+        brown: "#7E5A40",
         neu: {
           100: "#FCF9F7",
           400: "#2B1105",

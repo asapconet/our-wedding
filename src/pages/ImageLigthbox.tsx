@@ -55,10 +55,12 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
   }, [isOpen, prevImage, nextImage]);
 
   return (
-    <div className="w-full my-8">
+    <div className="w-full mt-8 bg-gray-100 py-6 sm:py-12 lg:py-24">
       <div className="relative">
-        <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6
-         gap-2 sm:gap-4 px-2 sm:px-4">
+        <div
+          className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6
+         gap-2 sm:gap-4 px-2 sm:px-4"
+        >
           {images.map((image, index) => (
             <div
               key={index}
@@ -77,20 +79,18 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
           style={{ animationDelay: "0.3s" }}
         >
-          <div className="bg-plantBg bg-contain bg-no-repeat bg-center h-48 sm:h-64 md:h-80 lg:h-96
-           w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg opacity-15" />
+          <div
+            className="bg-plantBg bg-contain bg-no-repeat bg-center h-48 sm:h-64 md:h-80 lg:h-96
+           w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg opacity-15"
+          />
         </div>
       </div>
 
       {isOpen && (
         <div
-          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex items-center justify-center z-50"
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-85 flex items-center justify-center z-50"
           onClick={handleOutsideClick}
         >
-          <div
-            className="absolute inset-0 bg-plantBg bg-contain bg-no-repeat bg-center opacity-15 pointer-events-none"
-            style={{ animationDelay: "0.3s" }}
-          />
           <button
             className="absolute top-4 right-6 text-white hover:text-gray-400 z-10"
             onClick={closeLightbox}
@@ -113,7 +113,6 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <polyline points="11 17 6 12 11 7"></polyline>
               <polyline points="18 17 13 12 18 7"></polyline>
             </svg>
           </button>
