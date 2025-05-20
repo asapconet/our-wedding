@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { FaAngleDoubleLeft, FaAngleRight } from "react-icons/fa";
 
 interface Image {
   src: string;
@@ -79,7 +78,7 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
           style={{ animationDelay: "0.3s" }}
         >
           <div className="bg-plantBg bg-contain bg-no-repeat bg-center h-48 sm:h-64 md:h-80 lg:h-96
-           w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] opacity-15" />
+           w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg opacity-15" />
         </div>
       </div>
 
@@ -103,7 +102,20 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
             className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-400 z-10"
             onClick={prevImage}
           >
-            <FaAngleDoubleLeft size={40} />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="11 17 6 12 11 7"></polyline>
+              <polyline points="18 17 13 12 18 7"></polyline>
+            </svg>
           </button>
 
           <div className="w-full h-full flex flex-col items-center justify-center p-4">
@@ -126,7 +138,19 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
             className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-400 z-10"
             onClick={nextImage}
           >
-            <FaAngleRight size={40} />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
         </div>
       )}

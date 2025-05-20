@@ -8,6 +8,8 @@ const OurStory = () => {
   const [typedTitle, setTypedTitle] = useState<string>("");
   const [typedText, setTypedText] = useState<string>("");
   const [isTypingComplete, setIsTypingComplete] = useState<boolean>(false);
+  const [hasStartedAnimation, setHasStartedAnimation] =
+    useState<boolean>(false);
   const sectionRef = useRef<HTMLElement | null>(null);
 
   const fullText = paragraphs.join(" ");
@@ -17,30 +19,10 @@ const OurStory = () => {
     words.length > 150 ? `${truncatedText}...` : truncatedText;
 
   useEffect(() => {
-    const animateContent = async () => {
-      await typeWriter("Our Story", {
-        speed: 25,
-        onUpdate: (currentText: string) => {
-          setTypedTitle(currentText);
-        },
-      });
-      await typeWriter(displayText, {
-        speed: 5,
-        onUpdate: (currentText: string) => {
-          setTypedText(currentText);
-        },
-      });
-      // Estimate animation duration: text length * speed + buffer
-      const animationDuration = displayText.length * 5 + 200;
-      setTimeout(() => {
-        setIsTypingComplete(true);
-      }, animationDuration);
-    };
-
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          animateContent();
+        if (entries[0].isIntersecting && !hasStartedAnimation) {
+          setHasStartedAnimation(true);
           observer.disconnect();
         }
       },
@@ -54,29 +36,70 @@ const OurStory = () => {
     return () => {
       observer.disconnect();
     };
-  }, [displayText]);
+  }, [hasStartedAnimation]);
+
+  useEffect(() => {
+    if (!hasStartedAnimation) return;
+
+    const animateTitle = async () => {
+      try {
+        await typeWriter("Our Story", {
+          speed: 25,
+          onUpdate: setTypedTitle,
+        });
+      } catch (error) {
+        console.error("Error animating title:", error);
+        setTypedTitle("Our Story");
+      }
+    };
+
+    animateTitle();
+  }, [hasStartedAnimation]);
+
+  useEffect(() => {
+    if (!hasStartedAnimation || typedTitle !== "Our Story") return;
+
+    const animateText = async () => {
+      try {
+        await typeWriter(displayText, {
+          speed: 5,
+          onUpdate: setTypedText,
+        });
+        setIsTypingComplete(true);
+      } catch (error) {
+        console.error("Error animating text:", error);
+        setTypedText(displayText);
+        setIsTypingComplete(true);
+      }
+    };
+
+    animateText();
+  }, [hasStartedAnimation, typedTitle, displayText]);
 
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col items-center py-12 md:py-16 px-4 sm:px-6 lg:px-8"
+      className="flex flex-col items-center py-12 md:py-16"
     >
-      <div className="text-center max-w-4xl mx-auto mb-8 md:mb-12 min-h-[355px]">
+      <div className="text-center max-w-4xl mx-auto mb-8 md:mb-12 min-h-[255px] px-2">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-6 animate-fade-in">
-          {typedTitle}
+          {typedTitle || "Our Story"}
         </h1>
-        {isTypingComplete ? (
-          <Link
-            to="/our-story-full"
-            className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left block hover:text-blue-500 transition-colors"
-          >
-            {typedText}
-          </Link>
-        ) : (
-          <p className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left">
-            {typedText}
-          </p>
-        )}
+
+        <div className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed text-left">
+          {typedText}
+
+          {isTypingComplete && words.length > 150 && (
+            <div className="mt-4">
+              <Link
+                to="/our-story-full"
+                className="inline-block px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors"
+              >
+                Read Full Story
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
 
       <ImageGallery images={galleryImages} />

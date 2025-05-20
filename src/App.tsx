@@ -78,7 +78,7 @@ const App = () => {
         ref={(el) => {
           sectionRefs.current["party"] = el;
         }}
-        className="min-h-screen bg-gold"
+        className=""
       >
         <WeddingParty />
       </div>

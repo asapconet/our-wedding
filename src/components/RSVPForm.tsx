@@ -69,7 +69,7 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
   };
 
   return (
-    <div className="relative px-4 sm:px-6 lg:px-8">
+    <div className="relative px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="flex flex-col items-center py-12 md:py-16">
         <div className="text-center max-w-4xl mx-auto my-8 md:my-12 animate-slideUp">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-8 animate-slideFromRight">
@@ -80,7 +80,7 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
           </p>
           <form
             onSubmit={handleSubmit}
-            className="max-w-3xl mx-auto text-left bg-white/50 p-6 md:p-8 rounded-lg"
+            className="max-w-3xl mx-auto text-left bg-white/50 p-6 md:p-8 rounded-lg relative z-10"
           >
             <div className="flex flex-col md:flex-row md:space-x-6 mb-6">
               <div className="flex-1 mb-4 md:mb-0">
@@ -208,13 +208,9 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
           </form>
         </div>
       </div>
-      <div
-        className="absolute inset-x-0 bottom-0 sm:bottom-32 lg:bottom-80 w-full
-       h-64 sm:h-72 lg:h-96 opacity-5 pointer-events-none z-0"
-      >
+      <div className="absolute inset-x-0 bottom-72 bg-black left-0 w-full h-64 sm:h-72 lg:h-44 opacity-5 pointer-events-none z-0">
         <div className="relative w-full h-full">
-          <div className="hidden sm:block absolute inset-x-0 bottom-0 sm:bottom-32
-           lg:bottom-80 w-full h-64 sm:h-72 lg:h-96 opacity-5 pointer-events-none z-0">
+          <div className="absolute bottom-44 left-80 transform translate-x-1/2 w-48 sm:w-64 lg:w-80 h-48 sm:h-64 lg:h-80">
             <BackgroundIcon />
           </div>
         </div>

@@ -14,7 +14,9 @@ export const typeWriter = (
     const typeNextCharacter = () => {
       if (currentLength < text.length) {
         const currentText = text.slice(0, currentLength + 1);
-        onUpdate?.(currentText);
+        if (onUpdate) {
+          onUpdate(currentText);
+        }
         currentLength++;
 
         setTimeout(typeNextCharacter, speed);
