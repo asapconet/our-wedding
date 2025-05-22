@@ -64,7 +64,7 @@ const Itinerary = () => {
   return (
     <div
       ref={sectionRef}
-      className="min-h-screen bg-gray-50 text-gray-800 py-8 px-4 sm:px-6 lg:px-8 relative"
+      className="min-h-screen bg-gray-50 text-brown py-8 px-4 sm:px-6 lg:px-8 relative"
     >
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-normal mb-12 text-center animate-fade-in">
@@ -78,7 +78,7 @@ const Itinerary = () => {
               className={`text-base pb-1 transition-all duration-300 ${
                 activeDay === day
                   ? "border-b-2 border-gray-400 font-medium"
-                  : "text-gray-500 hover:text-gray-700"
+                  : "text-brown hover:text-gold"
               }`}
               onClick={() => handleDayChange(day)}
               aria-selected={activeDay === day}
@@ -98,8 +98,8 @@ const Itinerary = () => {
             {activeItems.map((item: ItineraryItem, index: number) => (
               <div
                 key={`time-${index}`}
-                className="mb-24 text-right text-gray-500 animate-slide-in-right"
-                style={{ animationDelay: `${index * 200}ms` }}
+                className="mb-24 text-right text-brown animate-slide-in-right"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <p className="text-lg">{item.time}</p>
               </div>
@@ -113,12 +113,12 @@ const Itinerary = () => {
                 <div
                   key={`content-${index}`}
                   className="mb-16 animate-slide-in-left"
-                  style={{ animationDelay: `${index * 200}ms` }}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <h2 className="text-xl font-medium mb-4 h-8 min-h-[2rem]">
                     {typedContent.title || ""}
                   </h2>
-                  <p className="text-base leading-relaxed text-gray-600 min-h-[3rem]">
+                  <p className="text-base leading-relaxed text-brown min-h-[3rem]">
                     {typedContent.description || ""}
                   </p>
                 </div>

@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Itinerary from "./pages/Itinerary";
 import WeddingParty from "./pages/WeddingParty";
 import RSVP from "./pages/RSVP";
+import Venue from "./pages/Venue";
 import Navbar, { type SectionKey } from "./components/Navbar";
 import OurStory from "@pages/OurStory/OurStory";
 import ErrorBoundary from "./ErrorBoundary";
@@ -10,7 +11,6 @@ import OurStoryPage from "@pages/OurStory";
 import { galleryImages } from "./constants";
 import { ImageGallery } from "@pages/ImageLigthbox";
 import { useSectionNavigation } from "@hooks/useSectionNav";
-import Venue from "@pages/Venue";
 
 const MainContent = () => {
   const sectionIds: SectionKey[] = [
@@ -22,8 +22,7 @@ const MainContent = () => {
     "itinerary",
     "rsvp",
   ];
-  const { activeSection, scrollToSection, isNavAtTop, isMobileScrolled } =
-    useSectionNavigation(sectionIds);
+  const { activeSection, scrollToSection, isNavAtTop, isMobileScrolled } = useSectionNavigation(sectionIds);
 
   return (
     <ErrorBoundary>
@@ -46,7 +45,7 @@ const MainContent = () => {
         <Venue />
       </div>
       <div id="party" className="">
-        <WeddingParty />
+        <WeddingParty activeSection={activeSection} />
       </div>
       <div id="itinerary" className="min-h-screen bg-gray-50">
         <Itinerary />
@@ -70,3 +69,4 @@ const App = () => {
 };
 
 export default App;
+

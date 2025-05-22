@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Groom from "@assets/images/groom.png";
-import useScrollAnimation from "@hooks/useScroll";
-import { useFixedRefs } from "@hooks/useFixedRefs";
+import type { SectionKey } from "@components/Navbar";
 
-const WeddingParty = () => {
-  const [activeTab, setActiveTab] = useState("groomsmen");
+interface WeddingPartyProps {
+  activeSection: SectionKey;
+}
+
+const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
+  const [activeTab, setActiveTab] = useState<"groomsmen" | "bridesmaids">("groomsmen");
 
   const groomsmen = [
     { name: "T", image: Groom },
@@ -34,18 +37,10 @@ const WeddingParty = () => {
     { name: "Ava", image: "/api/placeholder/200/200" },
   ];
 
-  const refs = useFixedRefs<HTMLDivElement>(5);
-
-  useScrollAnimation(refs, {
-    animationClass: "slide-up",
-    delayIncrement: 100,
-    threshold: 0.1,
-  });
-
   const people = activeTab === "groomsmen" ? groomsmen : bridesmaids;
 
   return (
-    <div className="bg-brown-500 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-brown">
+    <div id="party" className="bg-brown-500 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-brown">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center text-lg sm:text-xl md:text-2xl font-normal mb-8">
           The Wedding Party
@@ -80,16 +75,18 @@ const WeddingParty = () => {
           {people.map((person, index) => (
             <div
               key={index}
-              ref={refs[index]}
-              className="flex flex-col items-center"
+              className={`flex flex-col items-center ${
+                activeSection === "party" ? "slide-up" : "opacity-0 translate-y-10"
+              }`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 mb-4 overflow-hidden border-2 border-white rounded-sm">
                 <img
-                  src={person.image}
+                  src={typeof person.image === "string" ? person.image : person.image}
                   alt={`${person.name} - ${
                     activeTab === "groomsmen" ? "Groomsman" : "Bridesmaid"
                   }`}
-                  className="w-full h-full object-cover "
+                  className="w-full h-full object-cover"
                 />
               </div>
               <p className="text-lg sm:text-xl md:text-2xl text-neu-100 text-center">
