@@ -89,7 +89,7 @@ const WeddingParty = () => {
                   alt={`${person.name} - ${
                     activeTab === "groomsmen" ? "Groomsman" : "Bridesmaid"
                   }`}
-                  className="w-full h-full object-cover grayscale"
+                  className="w-full h-full object-cover "
                 />
               </div>
               <p className="text-lg sm:text-xl md:text-2xl text-neu-100 text-center">

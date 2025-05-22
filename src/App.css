@@ -12,3 +12,15 @@
     animation: logo-spin infinite 20s linear;
   }
 }
+
+.nav-slide-to-top {
+  top: 0 !important;
+  transform: translateY(0) !important;
+  transition: top 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+@supports (backdrop-filter: blur(4px)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
