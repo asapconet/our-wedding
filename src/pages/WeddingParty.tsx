@@ -15,9 +15,21 @@ const WeddingParty = () => {
   ];
 
   const bridesmaids = [
-    { name: "Emma", image: "/api/placeholder/200/200" },
-    { name: "Sophia", image: "/api/placeholder/200/200" },
-    { name: "Olivia", image: "/api/placeholder/200/200" },
+    {
+      name: "Mercy Ladani",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747835841/ojoPrinces_e8bcf5.jpg",
+    },
+    {
+      name: "Ada Precious Akaniru",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747915945/ada_strisn.jpg",
+    },
+    {
+      name: "Victory Oga",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747916148/victory_on4l2b.jpg",
+    },
     { name: "Mia", image: "/api/placeholder/200/200" },
     { name: "Ava", image: "/api/placeholder/200/200" },
   ];

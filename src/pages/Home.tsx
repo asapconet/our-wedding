@@ -1,9 +1,20 @@
 import useContrastTextColor from "@hooks/useContrast";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import confetti from "canvas-confetti";
 
 const Home: React.FC = () => {
   const textRef = useRef<HTMLHeadingElement>(null);
   const textColor = useContrastTextColor(textRef);
+
+  useEffect(() => {
+    
+    confetti({
+      particleCount: 200,
+      spread: 500,
+      origin: { y: 0.6 },
+      colors: ["#FFD700", "#FF69B4", "#00FF00", "#4169E1"], 
+    });
+  }, []); 
 
   return (
     <div
