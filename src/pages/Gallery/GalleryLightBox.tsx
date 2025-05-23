@@ -82,10 +82,10 @@ export const Lightbox: React.FC<LightboxProps> = ({
           <img
             src={selectedImage.src}
             alt={selectedImage.alt}
-            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+            className="max-w-full max-h-screen object-contain rounded-lg shadow-2xl"
           />
 
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 
+          <div className="absolute -bottom-5 left-0 right-0 bg-gradient-to-t from-black/80 
           to-transparent p-6 rounded-b-lg">
             <h3 className="text-white text-lg font-medium mb-1">
               {selectedImage.alt}
