@@ -8,9 +8,10 @@ import Navbar, { type SectionKey } from "./components/Navbar";
 import OurStory from "@pages/OurStory/OurStory";
 import ErrorBoundary from "./ErrorBoundary";
 import OurStoryPage from "@pages/OurStory";
-import { galleryImages } from "./constants";
-import { ImageGallery } from "@pages/ImageLigthbox";
+import { prevGalleryImages } from "./constants/gallery";
+import { ImageGallery } from "@pages/Gallery/ImageLigthbox";
 import { useSectionNavigation } from "@hooks/useSectionNav";
+import GalleryPage from "@pages/Gallery/Gallerypage";
 
 const MainContent = () => {
   const sectionIds: SectionKey[] = [
@@ -22,7 +23,8 @@ const MainContent = () => {
     "itinerary",
     "rsvp",
   ];
-  const { activeSection, scrollToSection, isNavAtTop, isMobileScrolled } = useSectionNavigation(sectionIds);
+  const { activeSection, scrollToSection, isNavAtTop, isMobileScrolled } =
+    useSectionNavigation(sectionIds);
 
   return (
     <ErrorBoundary>
@@ -39,9 +41,9 @@ const MainContent = () => {
         <OurStory />
       </div>
       <div id="gallery">
-        <ImageGallery images={galleryImages} />
+        <ImageGallery images={prevGalleryImages} />
       </div>
-      <div id="venue" className="">
+      <div id="venue">
         <Venue />
       </div>
       <div id="party" className="">
@@ -63,10 +65,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainContent />} />
         <Route path="/our-story" element={<OurStoryPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default App;
-

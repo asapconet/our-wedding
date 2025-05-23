@@ -46,3 +46,31 @@ export interface TimelineProps {
 export interface ImageCarouselProps extends StoryLayoutProps {
   reverse?: boolean;
 }
+
+export interface GalleryImage {
+  id: number;
+  src: string;
+  alt: string;
+  category: "engagement" | "wedding" | "casual";
+}
+
+export interface LightboxProps {
+  selectedImage: GalleryImage | null;
+  currentIndex: number;
+  images: GalleryImage[];
+  onClose: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
+  onDownload: (imageUrl: string, filename: string) => void;
+}
+
+export interface GalleryGridProps {
+  images: GalleryImage[];
+  onImageClick: (image: GalleryImage, index: number) => void;
+}
+
+export interface GalleryHeaderProps {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}

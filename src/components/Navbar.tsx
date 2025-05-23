@@ -100,6 +100,19 @@ const Navbar = forwardRef<HTMLElement, NavbarProps>(
                   >
                     {label}
                   </Link>
+                ) : page === "gallery" ? (
+                  <Link
+                    to="/gallery"
+                    className={`hover:underline focus:outline-none focus:underline ${
+                      activeSection === page ? "underline" : ""
+                    }`}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      onNavigate(page);
+                    }}
+                  >
+                    {label}
+                  </Link>
                 ) : (
                   <button
                     className={`hover:underline focus:outline-none focus:underline ${
@@ -137,6 +150,16 @@ const Navbar = forwardRef<HTMLElement, NavbarProps>(
                 {page === "our-story" ? (
                   <Link
                     to="/our-story"
+                    className={`hover:underline focus:outline-none focus:underline ${
+                      activeSection === page ? "underline" : ""
+                    }`}
+                    onClick={() => onNavigate(page)}
+                  >
+                    {label}
+                  </Link>
+                ) : page === "gallery" ? (
+                  <Link
+                    to="/gallery"
                     className={`hover:underline focus:outline-none focus:underline ${
                       activeSection === page ? "underline" : ""
                     }`}

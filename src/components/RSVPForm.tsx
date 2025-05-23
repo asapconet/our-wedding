@@ -45,17 +45,6 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
     }));
   };
 
-  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      events: {
-        ...prev.events,
-        [name]: checked,
-      },
-    }));
-  };
-
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -177,28 +166,6 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
                   )
                 )}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {[
-                  { name: "rehearsalDinner", label: "Rehearsal Dinner" },
-                  { name: "ceremony", label: "Ceremony" },
-                  { name: "reception", label: "Reception" },
-                ].map(({ name, label }) => (
-                  <div key={name} className="border border-neu-200 p-3 rounded">
-                    <label className="flex items-center space-x-2 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        name={name}
-                        checked={
-                          formData.events[name as keyof FormData["events"]]
-                        }
-                        onChange={handleCheckboxChange}
-                        className="form-checkbox"
-                      />
-                      <span className="text-brown">{label}</span>
-                    </label>
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="text-center mt-8">
               <button
@@ -240,13 +207,11 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
           accountName: "Christabel Adams",
           bankName: "One Bank",
           accountNumber: "1234567890123456",
-          
         }}
         groomDetails={{
           accountName: "Ayodeji Adeoti",
           bankName: "Zenith Bank",
           accountNumber: "9876543210987654",
-          
         }}
       />
     </div>

@@ -8,13 +8,35 @@ export const fullDescription = `Feugiat pretium egestas enim blandit purus euism
     Maecenas pellentesque sit eros vitae. Maecenas suspendisse tincidunt ullamcorper justo
      neque quis et, laoreet.`;
 
+const accommodations = [
+  {
+    name: "Hotel 1",
+    address:
+      "Joclarif Hotels and Suits, Yankarfe Kwarin Ayuba, Graceland, Zaria, Kaduna State",
+    phone: "+2348160009982",
+  },
+  {
+    name: "Hotel 2",
+    address: "Peace Garden Hotel, Near Central Mosque, Kawo, Kaduna State",
+    phone: "+2348123456789",
+  },
+  {
+    name: "Hotel 3",
+    address: "Eagle Heights Resort, Behind ABC Park, Barnawa, Kaduna State",
+    phone: "+2348034567890",
+  },
+];
+
+const formatPhone = (phone: string) =>
+  phone.replace(/(\+234)(\d{3})(\d{3})(\d{4})/, "$1 $2 $3 $4");
+
 const Venue = () => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
     typeWriter(fullDescription, {
       speed: 20,
-      onUpdate: (currentText) => setDescription(currentText),
+      onUpdate: setDescription,
     });
   }, []);
 
@@ -27,15 +49,13 @@ const Venue = () => {
           className="w-full h-[300px] object-cover animate-fadeIn bg-brown py-3"
         />
 
-        <div className="text-center max-w-4xl mx-auto my-8 md:my-12 animate-slideUp ">
+        <div className="text-center max-w-4xl mx-auto my-8 md:my-12 animate-slideUp">
           <p className="text-lg md:text-xl text-pri font-normal mb-6">
             The Location
           </p>
-
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-8 animate-slideFromRight">
             Somewhere in Paradise
           </h1>
-
           <p className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed min-h-[120px] sm:min-h-[140px] md:min-h-[160px]">
             {description}
           </p>
@@ -53,23 +73,24 @@ const Venue = () => {
           </h1>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[1, 2, 3].map((_, index) => (
+            {accommodations.map((hotel, index) => (
               <div
-                key={index}
+                key={hotel.name}
                 className="animate-fadeIn transition-transform transform hover:scale-105 text-center sm:text-left"
                 style={{ animationDelay: `${0.2 * (index + 1)}s` }}
               >
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-neu-400 mb-6">
-                  Hotel {index + 1}
+                  {hotel.name}
                 </h2>
                 <p className="text-base sm:text-lg font-medium text-neu-400 leading-relaxed mb-4">
-                  Feugiat pretium egestas enim blandit purus euismod. Feugiat
-                  magna aliquam lectus lectus eu amet. Eros, accumsan purus enim
-                  nascetur quam diam felis, fringilla varius.
+                  {hotel.address}
                 </p>
-                <p className="text-lg sm:text-xl font-normal text-pri hover:text-pri-dark transition-colors">
-                  +123 2343 545 4545
-                </p>
+                <a
+                  href={`tel:${hotel.phone}`}
+                  className="text-lg sm:text-xl font-normal text-pri hover:text-pri-dark transition-colors"
+                >
+                  {formatPhone(hotel.phone)}
+                </a>
               </div>
             ))}
           </div>

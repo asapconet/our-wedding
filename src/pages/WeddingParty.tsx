@@ -10,11 +10,27 @@ const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
   const [activeTab, setActiveTab] = useState<"groomsmen" | "bridesmaids">("groomsmen");
 
   const groomsmen = [
-    { name: "T", image: Groom },
+    {
+      name: "Tuoyo OTuedon",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747996284/IMG_1838_jvb4g2.jpg",
+    },
     { name: "M", image: Groom },
-    { name: "R", image: Groom },
-    { name: "A", image: Groom },
-    { name: "T", image: Groom },
+    {
+      name: "Richard Adams",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747996565/ri_ofga5s.jpg",
+    },
+    {
+      name: "Temitope David",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1748002571/195580ab-88d1-455b-bf91-8a83b2db837a_lkunft.jpg",
+    },
+    {
+      name: "Aaron Sunday",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747997489/IMG_6089_h3frfn.png",
+    },
   ];
 
   const bridesmaids = [
