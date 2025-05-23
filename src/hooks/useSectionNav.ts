@@ -23,14 +23,14 @@ export function useSectionNavigation(sectionIds: SectionKey[]) {
       setActiveSection(newActiveSection);
       setIsNavAtTop(newActiveSection !== "home");
       setIsMobileScrolled(newActiveSection !== "home");
-    }, 100); // Debounce for 100ms
+    }, 100); 
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      handleScroll.cancel(); // Cancel pending debounced calls
+      handleScroll.cancel(); 
     };
   }, [sectionIds]);
 

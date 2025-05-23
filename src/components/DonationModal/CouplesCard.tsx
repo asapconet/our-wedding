@@ -1,8 +1,8 @@
-import type { PersonDetails } from "@types/index";
 import React from "react";
 import { BiHeart } from "react-icons/bi";
 import { BsBank, BsPerson } from "react-icons/bs";
 import { CopyButton } from "./CopyButton";
+import type { PersonDetails } from "../../types/index";
 
 interface PersonCardProps {
   details: PersonDetails;
@@ -51,7 +51,7 @@ export const CouplesCard: React.FC<PersonCardProps> = ({
             <span className="font-medium text-brown">{details.bankName}</span>
           </div>
 
-          <div className="mt-6 p-4 bg-white/70 rounded-lg border border-gray-200">
+          <div className="mt-6 p-4 bg-white/70 rounded-lg shadow-md">
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm font-medium text-brown">
                 💳 Account Number:

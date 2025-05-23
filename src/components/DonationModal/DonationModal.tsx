@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ModalHeader } from "./ModalHeader";
 import { ModalFooter } from "./ModalFooter";
-import type { DonationModalProps } from "@types/index";
 import { CouplesCard } from "./CouplesCard";
+import type { DonationModalProps } from "../../types/index";
 
 export const DonationModal: React.FC<DonationModalProps> = ({
   isOpen,

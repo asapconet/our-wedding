@@ -1,11 +1,10 @@
-export type ItineraryItem ={
+export type ItineraryItem = {
   time: string;
   title: string;
   description: string;
-}
+};
 
-
-export interface DonationModalProps {
+export type DonationModalProps = {
   isOpen: boolean;
   onClose: () => void;
   brideDetails: {
@@ -18,10 +17,10 @@ export interface DonationModalProps {
     bankName: string;
     accountName: string;
   };
-}
+};
 
-export interface PersonDetails {
+export type PersonDetails = {
   accountNumber: string;
   bankName: string;
   accountName: string;
-}
+};
