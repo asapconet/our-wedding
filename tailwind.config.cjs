@@ -9,8 +9,7 @@ module.exports = {
       },
       backgroundImage: {
         mainBg:
-          "url('https://res.cloudinary.com/dsz3obfpx/image/upload/v1747499197/BW_rcujnr.jpg')",
-        mainBg1: 'url("/src/assets/images/culture.jpg")',
+          "url('https://res.cloudinary.com/dsz3obfpx/image/upload/v1747965124/BW_1_dv9voq.jpg')",
         plantBg: 'url("/src/assets/images/plant.png")',
       },
       colors: {

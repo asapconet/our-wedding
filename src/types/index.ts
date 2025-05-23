@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type ItineraryItem = {
   time: string;
   title: string;
@@ -24,3 +26,23 @@ export type PersonDetails = {
   bankName: string;
   accountName: string;
 };
+
+export interface StoryData {
+  title: string;
+  content: string;
+  image?: string;
+}
+
+export interface StoryLayoutProps {
+  title: string | ReactNode;
+  content: string;
+  image?: string;
+}
+
+export interface TimelineProps {
+  stories: StoryData[];
+}
+
+export interface ImageCarouselProps extends StoryLayoutProps {
+  reverse?: boolean;
+}
