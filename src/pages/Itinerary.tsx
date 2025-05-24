@@ -5,7 +5,7 @@ import { typeWriter } from "../utils/typesWriter";
 import useTypewriterOnScroll from "@hooks/useTypeWritter";
 
 const Itinerary = () => {
-  const [activeDay, setActiveDay] = useState("Friday, July 11");
+  const [activeDay, setActiveDay] = useState("Friday, May 30");
   const [activeItems, setActiveItems] = useState<ItineraryItem[]>([]);
   const [typedContents, setTypedContents] = useState<{
     [key: number]: { title: string; description: string };

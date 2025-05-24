@@ -6,59 +6,67 @@ interface DailySchedule {
 export const days = ["Friday, July 11", "Saturday, July 12", "Sunday, July 13"];
 
 export const itineraryItems: DailySchedule = {
-  "Friday, July 11": [
-    {
-      time: "10am",
-      title: "Item Title",
-      description:
-        "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.",
-    },
+  "Friday, May 30": [
     {
       time: "12pm",
-      title: "Item Title",
+      title: "Traditional Wedding Ceremony",
       description:
-        "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.",
+        "A traditional wedding following the Edo tradition will be held at the bride's family compound in Zaria, Kaduna State, Nigeria.",
     },
     {
       time: "2pm",
-      title: "Item Title",
+      title: "Lunch",
       description:
-        "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.",
+        "After the ceremony, guests will be treated to a lunch at the bride's family compound.",
+    },
+    {
+      time: "3pm",
+      title: "Rest of evening",
+      description:
+        "The bulk of the evening will feature a small party with music and dancing.",
     },
   ],
-  "Saturday, July 12": [
+  "Saturday, May 31": [
     {
-      time: "9am",
-      title: "Item Title",
+      time: "10am",
+      title: "Church Wedding Ceremony",
       description:
-        "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.",
+        "In the presence of family, friends and well-wishers, the couple will exchange vows and be joined in holy matrimony at the church, RCCG Life Gate Parish, Graceland, Zaria, Kaduna State.",
     },
     {
       time: "11am",
-      title: "Item Title",
+      title: "Photo Session",
       description:
-        "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.",
+        "Photo sessions with the couple, family members, bridal train, and guests will take place at the church grounds and nearby scenic locations.",
     },
-  ],
-  "Sunday, July 13": [
     {
-      time: "10am",
-      title: "Item Title",
+      time: "12pm",
+      title: "Lunch",
       description:
-        "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.",
+        "To rest weary bellies, guests will be treated to a sumptuous lunch buffet.",
     },
     {
       time: "1pm",
-      title: "Item Title",
+      title: "Departures",
       description:
-        "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.",
+        "Guests begin to depart for their various destinations. The couple and their families will be available to share final hugs, express gratitude, and bid everyone safe travels.",
     },
+    
+  ],
+  "Sunday, June 1": [
+    {
+      time: "10am",
+      title: "Thanksgiving Service",
+      description:
+        "A thanksgiving service will be held at RCCG All Nations Assembly, FCT, to give glory to God for a successful wedding celebration and to bless the newlyweds.",
+    }
   ],
 };
 
+
 export const paragraphs = [
-  "Feugiat pretium egestas enim blandit purus euismod. Feugiat magna aliquam lectus lectus eu amet. Eros, accumsan purus enim nascetur quam diam felis, fringilla varius. Quis purus nisl orci eu, ultrices.",
-  "Purus pretium egestas ultricies tempus sit elit. Maecenas pellentesque sit eros vitae. Maecenas suspendisse tincidunt ullamcorper justo neque quis et, laoreet. Vitae lacus, aliquet lorem mauris, sit dolor sodales. Nullam quam quis lorem dui tristique massa enim.",
-  "Faucibus sed egestas mollis vivamus et sed sed.",
+  "A meeting orchestrated by Fingers beyond the grasp of our feeble minds has blossomed into a beautiful union of two souls.",
+  "It started with a tired evening of gruesome examinations in the University of Abuja, Abuja, Nigeria. Ayodeji, would proceed to a prayer meeting against his wishes, but in compliance to an encourage from his friend, Aaron.",
+  "That evening will end with a hospital visit, but would mark the beginning of a beautiful journey.",
 ];
 

@@ -2,11 +2,7 @@ import VenueShot from "@assets/images/venue.png";
 import { typeWriter } from "@utils/typesWriter";
 import { useEffect, useState } from "react";
 
-export const fullDescription = `Feugiat pretium egestas enim blandit purus euismod. Feugiat magna aliquam lectus lectus
-   eu amet. Eros, accumsan purus enim nascetur quam diam felis, fringilla varius. 
-   Quis purus nisl orci eu, ultrices. Purus pretium egestas ultricies tempus sit elit.
-    Maecenas pellentesque sit eros vitae. Maecenas suspendisse tincidunt ullamcorper justo
-     neque quis et, laoreet.`;
+export const fullDescription = `For guests traveling from out of town, we've curated a list of recommended hotels to ensure a comfortable and convenient stay. Each option offers easy access to the wedding venues and provides a range of amenities to help you relax between events. We encourage you to book early, as availability may be limited due to the busy weekend. Contact details are provided below for direct reservations.`;
 
 const accommodations = [
   {
