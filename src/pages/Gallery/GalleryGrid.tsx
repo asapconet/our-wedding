@@ -213,7 +213,7 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
             {validImages.map((image, index) => (
               <div
                 key={`${image.id}-${index}`}
-                className={`group relative overflow-hidde          {/* Load more trigger - only show if we have more images to load */}n rounded-xl cursor-pointer
+                className={`group relative overflow-hidden rounded-xl cursor-pointer
                  transform transition-all duration-300 hover:scale-105 hover:shadow-2xl
                  ${getGridItemClass(index)} min-h-0 animate-fade-in`}
                 onClick={() => onImageClick(image, index)}
