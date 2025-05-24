@@ -41,7 +41,8 @@ const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
     },
     {
       name: "Ojo Agnes",
-      image: "",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1748125688/agie_xmio3q.jpg",
     },
     {
       name: "Ada Precious Akaniru",
