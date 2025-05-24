@@ -40,6 +40,10 @@ const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
         "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747835841/ojoPrinces_e8bcf5.jpg",
     },
     {
+      name: "Ojo Agnes",
+      image: "",
+    },
+    {
       name: "Ada Precious Akaniru",
       image:
         "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747915945/ada_strisn.jpg",
@@ -49,8 +53,16 @@ const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
       image:
         "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747916148/victory_on4l2b.jpg",
     },
-    { name: "Mia", image: "/api/placeholder/200/200" },
-    { name: "Ava", image: "/api/placeholder/200/200" },
+    {
+      name: "Deborah Saliu",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1748125060/deb_d8hxix.jpg",
+    },
+    {
+      name: "Favour Adams",
+      image:
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1748124486/fav_ua95cv.jpg",
+    },
   ];
 
   const people = activeTab === "groomsmen" ? groomsmen : bridesmaids;
