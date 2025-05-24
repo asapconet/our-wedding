@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import { AiOutlineZoomIn } from "react-icons/ai";
 import type { GalleryGridProps, GalleryImage } from "../../types/index";
+import { IMAGE_ID_RANGES } from "@constants/gallery";
+import { imageIds } from "@utils/toDownLoad";
 
 interface ExtendedGalleryGridProps extends Omit<GalleryGridProps, "images"> {
   images?: GalleryImage[];
@@ -18,7 +20,7 @@ interface ExtendedGalleryGridProps extends Omit<GalleryGridProps, "images"> {
 export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
   images,
   onImageClick,
-  totalImages = 229,
+  totalImages = IMAGE_ID_RANGES.end,
   initialBatchSize = 12,
   loadMoreBatchSize = 8,
 }) => {
@@ -38,15 +40,16 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
       return images;
     }
 
-    const awsImages: GalleryImage[] = [];
-    for (let i = 1; i <= totalImages; i++) {
-      awsImages.push({
-        id: i,
-        src: `https://assets.ayoandosa.love/website-images/${i}-min.jpg`,
-        alt: `Ayo & Osa ${i}`,
+    const awsImages: GalleryImage[] = imageIds
+      .flat()
+      .slice(0, totalImages)
+      .map((id) => ({
+        id,
+        src: `https://assets.ayoandosa.love/website-images/${id}-min.jpg`,
+        alt: `Ayo & Osa ${id}`,
         category: "wedding",
-      });
-    }
+      }));
+
     return awsImages;
   }, [images, totalImages]);
 
@@ -176,6 +179,7 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
 
     return patterns[index % patterns.length];
   }, []);
+
   if (validImages.length === 0 && !isLoading && !hasMore && !isInitialLoad) {
     return (
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8 lg:py-12">
