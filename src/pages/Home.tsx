@@ -37,7 +37,7 @@ const Home: React.FC = () => {
             textColor === "white" ? "text-white" : "text-black"
           }`}
       >
-        30th & 31st May, 2025 - Zariah, Kaduna
+        30th & 31st May, 2025 - Zaria, Kaduna
       </p>
     </div>
   );

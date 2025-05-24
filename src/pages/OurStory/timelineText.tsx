@@ -7,7 +7,7 @@ export const TimelineTextOnlyLayout: React.FC<TimelineProps> = ({
   return (
     <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
       <h2 className="text-xl sm:text-2xl font-light text-gold mb-8 sm:mb-12 text-center">
-        Our Journey to "I Do"
+        Acknowledgements
       </h2>
       <div className="space-y-12 sm:space-y-16">
         {stories.map((story, index) => (

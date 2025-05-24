@@ -14,7 +14,7 @@ interface FormData {
 }
 
 const fullDescription =
-  "Phasellus accumsan neque viverra ut sem aliquam purus rhoncus, morbi. Ut in eget leo dui nunc. Tortor viverra magna dignissim sit. Libero eu euismod risus, mauris etiam ut morbi amet in. Tortor duis dignissim adipiscing sem.";
+  "We are excited to share this special day with you. Please let us know if you will be able to attend!";
 
 const RSVP: React.FC = () => {
   const handleSubmit = (formData: FormData) => {

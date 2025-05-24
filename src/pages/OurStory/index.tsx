@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { TextOnlyLayout } from "./textLayout";
-import { longStoryContent, sampleStoryData } from "@constants/ourStory";
+import { acknowledgements, longStoryContent, timelineData } from "@constants/ourStory";
 import { ImageCarouselLayout } from "./image";
 import { SingleImageLayout } from "./singleImage";
 import { TimelineWithImagesLayout } from "./timeline";
@@ -43,10 +43,10 @@ const OurStoryPage: React.FC = () => {
           </h2>
         </div>
         <ImageCarouselLayout
-          title="The Beginning of Forever"
-          content="From the moment Ayo first saw Osa, he knew there was something special about her smile. It was at a mutual friend's birthday party where their eyes met across a crowded room, and the rest, as they say, is history.
-
-What started as casual conversation over shared interests in travel and photography quickly blossomed into late-night phone calls and weekend adventures exploring the city together."
+          title="Giant steps begin with a tiny step of kindness"
+          content="Ayodeji and Christabel met during their final year at university in 2021, both serving in the choir at Redeemed Christian Fellowship: whe played the keyboard, and she was a vocalist. At the time, their interactions were minimal; Christabel saw him as overly jovial, while Ayodeji hardly noticed her beyond fellowship duties and school activities.
+          
+          After their first semester exams, a friend (now bestman) encouraged Ayodeji to attend a prayer meeting, where they found Christabel sitting outside, clearly unwell. Though she initially said she was fine, Ayodeji sensed otherwise and tried to get a female executive to check on her. When that didn’t yield much, he stepped in and took her to the hospital himself. She was diagnosed with malaria, and Ayodeji insisted on standing by her side, an act of kindness that became the starting point of something much more."
           image={sampleImage}
         />
       </section>
@@ -59,20 +59,20 @@ What started as casual conversation over shared interests in travel and photogra
         </div>
         <SingleImageLayout
           title="A Perfect Moment"
-          content="After three years of building a beautiful relationship together, Ayo knew it was time to take the next step. He planned the perfect proposal at their favorite spot overlooking the city, where they had shared so many meaningful conversations about their future together."
+          content='Fast forward to 2024, Ayodeji knew he wanted to propose to Christabel before the year ran out. He carefully planned a surprise that would feel intimate, meaningful, and unforgettable. With the help of close friends from both sides, he booked a private cinema and invited Christabel under the pretense of a casual movie hangout. To make it less suspicious, he had her invite her friends too. In the middle of the movie, a video began to play: a collection of their memories together, narrated by Ayodeji, recounting their journey. It ended with the words, “Would you give me a chance to pop your knuckles forever, and will you marry me?”, to which Christabel, completely stunned and emotional, gave a joyful and resounding "yes."'
           image={sampleImage}
         />
       </section>
 
       <section className="py-12 sm:py-16 bg-gray-50">
         <div className="px-4 sm:px-0">
-          <TimelineWithImagesLayout stories={sampleStoryData} />
+          <TimelineWithImagesLayout stories={timelineData} />
         </div>
       </section>
 
       <section className="py-12 sm:py-16 bg-white">
         <div className="px-4 sm:px-0">
-          <TimelineTextOnlyLayout stories={sampleStoryData} />
+          <TimelineTextOnlyLayout stories={acknowledgements} />
         </div>
       </section>
     </div>
