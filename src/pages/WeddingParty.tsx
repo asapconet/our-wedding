@@ -23,7 +23,7 @@ const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
     {
       name: "Richard Adams",
       image:
-      "https://res.cloudinary.com/dsz3obfpx/image/upload/v1747996565/ri_ofga5s.jpg",
+        "https://res.cloudinary.com/dsz3obfpx/image/upload/v1748053272/richard_sdjb5m.jpg",
     },
     { name: "M", image: Groom },
     {
