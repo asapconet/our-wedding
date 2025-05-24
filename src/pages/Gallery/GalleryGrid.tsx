@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useMemo,
+} from "react";
 import { AiOutlineZoomIn } from "react-icons/ai";
 import type { GalleryGridProps, GalleryImage } from "../../types/index";
 
@@ -12,7 +18,7 @@ interface ExtendedGalleryGridProps extends Omit<GalleryGridProps, "images"> {
 export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
   images,
   onImageClick,
-  totalImages = 50,
+  totalImages = 229,
   initialBatchSize = 12,
   loadMoreBatchSize = 8,
 }) => {
@@ -20,11 +26,30 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [allImages, setAllImages] = useState<GalleryImage[]>([]);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement>(null);
+  const isValidatingRef = useRef(false);
+  const hasInitializedRef = useRef(false);
 
-  // Function to check if an image URL is valid
+  const allImages = useMemo((): GalleryImage[] => {
+    if (images && images.length > 20) {
+      return images;
+    }
+
+    const awsImages: GalleryImage[] = [];
+    for (let i = 1; i <= totalImages; i++) {
+      awsImages.push({
+        id: i,
+        src: `https://assets.ayoandosa.love/website-images/${i}-min.jpg`,
+        alt: `Ayo & Osa ${i}`,
+        category: "wedding",
+      });
+    }
+    return awsImages;
+  }, [images, totalImages]);
+
   const checkImageUrl = useCallback((url: string): Promise<boolean> => {
     return new Promise((resolve) => {
       const img = new Image();
@@ -32,77 +57,69 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
       img.onerror = () => resolve(false);
       img.src = url;
 
-      // Add timeout to prevent hanging on slow connections
       setTimeout(() => resolve(false), 3000);
     });
   }, []);
 
-  const generateImages = useCallback((): GalleryImage[] => {
-    const awsImages: GalleryImage[] = [];
-
-    for (let i = 1; i <= totalImages; i++) {
-      awsImages.push({
-        id: i,
-        src: `https://assets.ayoandosa.love/website-images/${i}.jpg`,
-        alt: `Ayo & Osa ${i}`,
-        category: "wedding",
-      });
-    }
-    return awsImages;
-  }, [totalImages]);
-
   const validateAndAddImages = useCallback(
-    async (imagesToValidate: GalleryImage[], batchSize: number) => {
-      if (currentIndex >= imagesToValidate.length) {
-        setHasMore(false);
-        setIsLoading(false);
+    async (startIndex: number, batchSize: number) => {
+      if (isValidatingRef.current || startIndex >= allImages.length) {
+        if (startIndex >= allImages.length) {
+          setHasMore(false);
+        }
         return;
       }
 
+      isValidatingRef.current = true;
       setIsLoading(true);
 
-      const batch = imagesToValidate.slice(
-        currentIndex,
-        currentIndex + batchSize
-      );
-      const validatedBatch: GalleryImage[] = [];
+      try {
+        const batch = allImages.slice(startIndex, startIndex + batchSize);
+        const validatedBatch: GalleryImage[] = [];
 
-      // Process images one by one to show them as they load
-      for (const image of batch) {
-        const isValid = await checkImageUrl(image.src);
-        if (isValid) {
-          validatedBatch.push(image);
-          // Add image immediately when validated
-          setValidImages((prev) => [...prev, image]);
+        const validationPromises = batch.map(async (image) => {
+          const isValid = await checkImageUrl(image.src);
+          return isValid ? image : null;
+        });
+
+        const results = await Promise.all(validationPromises);
+
+        for (const result of results) {
+          if (result) {
+            validatedBatch.push(result);
+          }
         }
+
+        if (validatedBatch.length > 0) {
+          setValidImages((prev) => [...prev, ...validatedBatch]);
+        }
+
+        setCurrentIndex(startIndex + batchSize);
+
+        if (startIndex + batchSize >= allImages.length) {
+          setHasMore(false);
+        }
+
+        if (isInitialLoad) {
+          setIsInitialLoad(false);
+        }
+      } catch (error) {
+        console.error("Error validating images:", error);
+      } finally {
+        setIsLoading(false);
+        isValidatingRef.current = false;
       }
-
-      setCurrentIndex((prev) => prev + batchSize);
-
-      // Check if we have more images to load
-      if (currentIndex + batchSize >= imagesToValidate.length) {
-        setHasMore(false);
-      }
-
-      setIsLoading(false);
     },
-    [currentIndex, checkImageUrl]
+    [allImages, checkImageUrl, isInitialLoad]
   );
 
-  // Initialize images and load first batch
   useEffect(() => {
-    const imagesToUse =
-      images && images.length > 20 ? images : generateImages();
-    setAllImages(imagesToUse);
-    setValidImages([]);
-    setCurrentIndex(0);
-    setHasMore(true);
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      validateAndAddImages(0, initialBatchSize);
+    }
+  }, [validateAndAddImages, initialBatchSize]);
 
-    // Load initial batch
-    validateAndAddImages(imagesToUse, initialBatchSize);
-  }, [images, generateImages, initialBatchSize, validateAndAddImages]);
-
-  // Intersection Observer for infinite scroll
   useEffect(() => {
     if (observerRef.current) {
       observerRef.current.disconnect();
@@ -114,18 +131,20 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
           entries[0].isIntersecting &&
           hasMore &&
           !isLoading &&
-          allImages.length > 0
+          !isValidatingRef.current &&
+          validImages.length >= 7 &&
+          !isInitialLoad
         ) {
-          validateAndAddImages(allImages, loadMoreBatchSize);
+          validateAndAddImages(currentIndex, loadMoreBatchSize);
         }
       },
       {
         threshold: 0.1,
-        rootMargin: "100px", // Start loading when 100px away from viewport
+        rootMargin: "100px",
       }
     );
 
-    if (loadMoreRef.current) {
+    if (loadMoreRef.current && validImages.length >= 7) {
       observerRef.current.observe(loadMoreRef.current);
     }
 
@@ -134,9 +153,17 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
         observerRef.current.disconnect();
       }
     };
-  }, [hasMore, isLoading, allImages, validateAndAddImages, loadMoreBatchSize]);
+  }, [
+    hasMore,
+    isLoading,
+    validImages.length,
+    currentIndex,
+    loadMoreBatchSize,
+    validateAndAddImages,
+    isInitialLoad,
+  ]);
 
-  const getGridItemClass = (index: number) => {
+  const getGridItemClass = useCallback((index: number) => {
     const patterns = [
       "col-span-1 row-span-1",
       "col-span-1 row-span-2",
@@ -148,9 +175,8 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
     ];
 
     return patterns[index % patterns.length];
-  };
-
-  if (validImages.length === 0 && !isLoading && !hasMore) {
+  }, []);
+  if (validImages.length === 0 && !isLoading && !hasMore && !isInitialLoad) {
     return (
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8 lg:py-12">
         <div className="flex items-center justify-center min-h-[400px]">
@@ -169,85 +195,83 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8 lg:py-12">
-      {validImages.length === 0 && isLoading && (
+      {validImages.length === 0 && isInitialLoad && isLoading && (
         <div className="flex items-center justify-center min-h-[200px]">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto mb-2"></div>
-            <p className="text-gray-600 text-sm">Loading images...</p>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brown mx-auto mb-2"></div>
+            <p className="text-gold text-sm">Loading images...</p>
           </div>
         </div>
       )}
 
       {validImages.length > 0 && (
-        <div
-          className="grid grid-cols-2 sm:grid-cols-3 grid-rows-[repeat(auto-fit,minmax(120px,1fr))]
-         sm:grid-rows-[repeat(auto-fit,minmax(150px,1fr))] gap-2 sm:gap-3 lg:gap-4"
-        >
-          {validImages.map((image, index) => (
-            <div
-              key={image.id}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer
-               transform transition-all duration-300 hover:scale-105 hover:shadow-2xl
-               ${getGridItemClass(index)} min-h-0 animate-fade-in`}
-              onClick={() => onImageClick(image, index)}
-              style={{
-                animationDelay: `${(index % 12) * 50}ms`, // Stagger animation for visual appeal
-              }}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-                onError={(e) => {
-                  // Hide image if it fails to load (backup protection)
-                  e.currentTarget.style.display = "none";
+        <>
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3 grid-rows-[repeat(auto-fit,minmax(120px,1fr))]
+           sm:grid-rows-[repeat(auto-fit,minmax(150px,1fr))] gap-2 sm:gap-3 lg:gap-4"
+          >
+            {validImages.map((image, index) => (
+              <div
+                key={`${image.id}-${index}`}
+                className={`group relative overflow-hidde          {/* Load more trigger - only show if we have more images to load */}n rounded-xl cursor-pointer
+                 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl
+                 ${getGridItemClass(index)} min-h-0 animate-fade-in`}
+                onClick={() => onImageClick(image, index)}
+                style={{
+                  animationDelay: `${(index % 12) * 50}ms`,
                 }}
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent 
-              to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-              <div
-                className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 text-white
-                 opacity-0 group-hover:opacity-100 
-              transition-opacity duration-300"
               >
-                <p className="text-xs sm:text-sm font-medium truncate">
-                  {image.alt}
-                </p>
-              </div>
-
-              <div
-                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100
-               transition-opacity duration-300"
-              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
                 <div
-                  className="bg-white/90 backdrop-blur-sm rounded-full p-2 sm:p-3 transform scale-75
-                 group-hover:scale-100 transition-transform duration-300"
+                  className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent 
+                to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <div
+                  className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 text-white
+                   opacity-0 group-hover:opacity-100 
+                transition-opacity duration-300"
                 >
-                  <AiOutlineZoomIn className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
+                  <p className="text-xs sm:text-sm font-medium truncate">
+                    {image.alt}
+                  </p>
+                </div>
+
+                <div
+                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100
+                 transition-opacity duration-300"
+                >
+                  <div
+                    className="bg-white/90 backdrop-blur-sm rounded-full p-2 sm:p-3 transform scale-75
+                   group-hover:scale-100 transition-transform duration-300"
+                  >
+                    <AiOutlineZoomIn className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Load more trigger */}
-      {hasMore && !isLoading && <div ref={loadMoreRef} className="h-4 py-8" />}
-
-      {/* Loading indicator */}
-      {isLoading && hasMore && (
-        <div className="flex justify-center py-8">
-          <div className="flex items-center space-x-2">
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900"></div>
-            <span className="text-gray-600 text-sm">Loading more...</span>
+            ))}
           </div>
-        </div>
+
+          {hasMore && <div ref={loadMoreRef} className="h-4 py-8" />}
+
+          {isLoading && !isInitialLoad && hasMore && (
+            <div className="flex justify-center py-8">
+              <div className="flex items-center space-x-2">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-brown"></div>
+                <span className="text-gold text-sm">Loading more...</span>
+              </div>
+            </div>
+          )}
+        </>
       )}
 
-      {/* Add fade-in animation styles */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
