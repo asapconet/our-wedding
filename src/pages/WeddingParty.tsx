@@ -8,7 +8,7 @@ interface WeddingPartyProps {
 
 const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
   const [activeTab, setActiveTab] = useState<"groomsmen" | "bridesmaids">(
-    "groomsmen"
+    "groomsmen",
   );
 
   const people = activeTab === "groomsmen" ? groomsmen : bridesmaids;
@@ -19,12 +19,12 @@ const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
 
   return (
     <div
-      id="party"
+      id="train"
       className="bg-brown-500 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-brown"
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center text-lg sm:text-xl md:text-2xl font-normal mb-8">
-          The Wedding Party
+          Bridesmaids & Groomsmen
         </h2>
 
         <div className="flex justify-center mb-10 sm:mb-12">
@@ -61,7 +61,7 @@ const WeddingParty = ({ activeSection }: WeddingPartyProps) => {
             <div
               key={person.name}
               className={`flex flex-col items-center ${
-                activeSection === "party"
+                activeSection === "train"
                   ? "slide-up"
                   : "opacity-0 translate-y-10"
               }`}

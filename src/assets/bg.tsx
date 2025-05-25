@@ -1,4 +1,3 @@
-
 export const BackgroundIcon = () => {
   return (
     <svg
@@ -3118,4 +3117,4 @@ export const BackgroundIcon = () => {
       </defs>
     </svg>
   );
-}
+};

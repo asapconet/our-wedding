@@ -4,7 +4,7 @@ export const typeWriter = (
     speed?: number;
     onUpdate?: (currentText: string) => void;
     startFrom?: number;
-  } = {}
+  } = {},
 ): Promise<void> => {
   const { speed = 20, onUpdate, startFrom = 0 } = options;
 

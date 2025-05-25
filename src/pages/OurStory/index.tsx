@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { TextOnlyLayout } from "./textLayout";
-import { acknowledgements, longStoryContent, timelineData } from "@constants/ourStory";
+import {
+  acknowledgements,
+  longStoryContent,
+  timelineData,
+} from "@constants/ourStory";
 import { ImageCarouselLayout } from "./image";
 import { SingleImageLayout } from "./singleImage";
 import { TimelineWithImagesLayout } from "./timeline";
@@ -26,12 +30,7 @@ const OurStoryPage: React.FC = () => {
           </h2>
         </div>
         <TextOnlyLayout
-          title={
-            <>
-              Our <br />
-              Journey <br /> Together
-            </>
-          }
+          title={<>Our Journey Together</>}
           content={longStoryContent}
         />
       </section>
@@ -58,9 +57,9 @@ const OurStoryPage: React.FC = () => {
           </h2>
         </div>
         <SingleImageLayout
-          title="A Perfect Moment"
+          title="Perfect Moment"
           content='Fast forward to 2024, Ayodeji knew he wanted to propose to Christabel before the year ran out. He carefully planned a surprise that would feel intimate, meaningful, and unforgettable. With the help of close friends from both sides, he booked a private cinema and invited Christabel under the pretense of a casual movie hangout. To make it less suspicious, he had her invite her friends too. In the middle of the movie, a video began to play: a collection of their memories together, narrated by Ayodeji, recounting their journey. It ended with the words, “Would you give me a chance to pop your knuckles forever, and will you marry me?”, to which Christabel, completely stunned and emotional, gave a joyful and resounding "yes."'
-          image={sampleImage}
+          image="https://assets.ayoandosa.love/website-images/our-story/our-story-2.jpg"
         />
       </section>
 

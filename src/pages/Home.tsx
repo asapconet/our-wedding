@@ -7,14 +7,13 @@ const Home: React.FC = () => {
   const textColor = useContrastTextColor(textRef);
 
   useEffect(() => {
-    
     confetti({
       particleCount: 200,
       spread: 500,
       origin: { y: 0.6 },
-      colors: ["#FFD700", "#FF69B4", "#00FF00", "#4169E1"], 
+      colors: ["#FFD700", "#FF69B4", "#00FF00", "#4169E1"],
     });
-  }, []); 
+  }, []);
 
   return (
     <div

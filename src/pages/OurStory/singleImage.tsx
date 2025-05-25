@@ -13,7 +13,7 @@ export const SingleImageLayout: React.FC<StoryLayoutProps> = ({
           <img
             src={image}
             alt={title as string}
-            className="w-full h-56 sm:h-64 lg:h-80 object-cover rounded-lg shadow-lg"
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
           />
         </div>
         <div className="order-1 lg:order-2 pt-0 lg:pt-4">
@@ -22,13 +22,6 @@ export const SingleImageLayout: React.FC<StoryLayoutProps> = ({
           </h3>
           <p className="text-neu-neu-400 text-sm sm:text-base leading-relaxed mb-4 whitespace-pre-line">
             {content}
-          </p>
-          <p className="text-neu-400 text-sm sm:text-base leading-relaxed">
-            The moment was everything they had dreamed of and more. Surrounded
-            by the golden glow of sunset, with the city lights beginning to
-            twinkle below, Ayo got down on one knee and asked Osa to be his
-            wife. Her joyful "yes" echoed across the hillside, marking the
-            beginning of their engagement journey.
           </p>
         </div>
       </div>

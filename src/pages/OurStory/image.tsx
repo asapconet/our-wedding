@@ -26,7 +26,7 @@ export const ImageCarouselLayout: React.FC<ImageCarouselProps> = ({
           <img
             src={image}
             alt={title as string}
-            className="w-full h-48 sm:h-56 lg:h-64 object-cover rounded-lg shadow-lg"
+            className="w-full h-48 sm:h-56 lg:h-96 object-cover rounded-lg shadow-lg"
           />
         </div>
       </div>

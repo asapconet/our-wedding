@@ -36,12 +36,12 @@ export const useGallery = (images: GalleryImage[]) => {
             selectedImage.id,
             "ayo",
             "osa",
-            selectedImage.category
+            selectedImage.category,
           );
         await downloadImage(imageUrl, filename);
       }
     },
-    [selectedImage]
+    [selectedImage],
   );
 
   return {

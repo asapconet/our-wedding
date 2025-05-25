@@ -50,7 +50,7 @@ const Venue = () => {
             The Location
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neu-400 mb-8 animate-slideFromRight">
-            Somewhere in Paradise
+            Graceland, Zaria
           </h1>
           <p className="text-base sm:text-lg md:text-xl font-medium text-neu-400 leading-relaxed min-h-[120px] sm:min-h-[140px] md:min-h-[160px]">
             {description}

@@ -4,7 +4,7 @@ export const IMAGE_ID_RANGES = {
   start: 1,
   end: 229,
   batchSize: 10,
-}
+};
 
 export const galleryPageImages: GalleryImage[] = [
   {

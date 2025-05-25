@@ -23,14 +23,14 @@ export function useSectionNavigation(sectionIds: SectionKey[]) {
       setActiveSection(newActiveSection);
       setIsNavAtTop(newActiveSection !== "home");
       setIsMobileScrolled(newActiveSection !== "home");
-    }, 100); 
+    }, 100);
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      handleScroll.cancel(); 
+      handleScroll.cancel();
     };
   }, [sectionIds]);
 
@@ -46,4 +46,3 @@ export function useSectionNavigation(sectionIds: SectionKey[]) {
 
   return { activeSection, scrollToSection, isNavAtTop, isMobileScrolled };
 }
-

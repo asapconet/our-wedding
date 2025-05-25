@@ -113,7 +113,7 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
         isValidatingRef.current = false;
       }
     },
-    [allImages, checkImageUrl, isInitialLoad]
+    [allImages, checkImageUrl, isInitialLoad],
   );
 
   useEffect(() => {
@@ -144,7 +144,7 @@ export const GalleryGrid: React.FC<ExtendedGalleryGridProps> = ({
       {
         threshold: 0.1,
         rootMargin: "100px",
-      }
+      },
     );
 
     if (loadMoreRef.current && validImages.length >= 7) {

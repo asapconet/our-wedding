@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { days, itineraryItems } from "@constants/index";
+import { itineraryItems } from "@constants/index";
 import type { ItineraryItem } from "../types/index";
 import { typeWriter } from "../utils/typesWriter";
 import useTypewriterOnScroll from "@hooks/useTypeWritter";
@@ -72,7 +72,7 @@ const Itinerary = () => {
         </h1>
 
         <div className="flex justify-center space-x-8 mb-16 animate-fade-in">
-          {days.map((day) => (
+          {Object.keys(itineraryItems).map((day) => (
             <button
               key={day}
               className={`text-base pb-1 transition-all duration-300 ${
@@ -90,11 +90,34 @@ const Itinerary = () => {
         </div>
 
         <div
-          className="grid grid-cols-4 gap-6"
+          className="flex flex-col gap-y-12 max-w-2xl mx-auto"
           role="tabpanel"
           aria-label={`Schedule for ${activeDay}`}
         >
-          <div className="col-span-1">
+          {activeItems.map((item: ItineraryItem, index: number) => (
+            <div className="flex gap-x-8">
+              <p
+                key={`time-${index}`}
+                className="text-right text-brown animate-slide-in-right text-lg"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {item.time}
+              </p>
+              <div
+                key={`content-${index}`}
+                className="animate-slide-in-left flex flex-col gap-2"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <p className="text-xl font-medium h-8 min-h-[2rem]">
+                  {typedContents[index]?.title || ""}
+                </p>
+                <p className="text-base leading-relaxed text-brown min-h-[3rem]">
+                  {typedContents[index]?.description || ""}
+                </p>
+              </div>
+            </div>
+          ))}
+          {/* <div className="col-span-1">
             {activeItems.map((item: ItineraryItem, index: number) => (
               <div
                 key={`time-${index}`}
@@ -124,7 +147,7 @@ const Itinerary = () => {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
 
         <div

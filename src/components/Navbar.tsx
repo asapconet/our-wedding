@@ -7,7 +7,7 @@ export type SectionKey =
   | "gallery"
   | "venue"
   | "itinerary"
-  | "party"
+  | "train"
   | "rsvp";
 
 interface NavbarProps {
@@ -26,7 +26,7 @@ const Navbar = forwardRef<HTMLElement, NavbarProps>(
       { label: "Our Story", page: "our-story" },
       { label: "Gallery", page: "gallery" },
       { label: "Venue", page: "venue" },
-      { label: "Wedding Party", page: "party" },
+      { label: "Train", page: "train" },
       { label: "Itinerary", page: "itinerary" },
       { label: "RSVP", page: "rsvp" },
     ];
@@ -183,7 +183,7 @@ const Navbar = forwardRef<HTMLElement, NavbarProps>(
         </div>
       </nav>
     );
-  }
+  },
 );
 
 export default Navbar;

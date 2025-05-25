@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { typeWriter } from "../../utils/typesWriter";
-import {paragraphs } from "@constants/index";
+import { paragraphs } from "@constants/index";
 import { Link } from "react-router-dom";
 
 const OurStory = () => {
@@ -23,7 +23,7 @@ const OurStory = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -99,8 +99,6 @@ const OurStory = () => {
           )}
         </div>
       </div>
-
-      
     </section>
   );
 };

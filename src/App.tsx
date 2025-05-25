@@ -20,7 +20,7 @@ const MainContent = () => {
     "our-story",
     "gallery",
     "venue",
-    "party",
+    "train",
     "itinerary",
     "rsvp",
   ];
@@ -76,7 +76,7 @@ const MainContent = () => {
       <div id="venue">
         <Venue />
       </div>
-      <div id="party" className="">
+      <div id="train" className="">
         <WeddingParty activeSection={activeSection} />
       </div>
       <div id="itinerary" className="min-h-screen bg-gray-50">
@@ -103,8 +103,8 @@ const OurStoryContent = () => (
       />
       <meta
         property="og:image"
-        // content="https://res.cloudinary.com/dsz3obfpx/image/upload/v1748054415/ourstory.jpg" 
-        />
+        // content="https://res.cloudinary.com/dsz3obfpx/image/upload/v1748054415/ourstory.jpg"
+      />
       <meta property="og:image:alt" content="Ayo & Osa Love Story" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://ayoandosa.love/our-story" />
@@ -137,7 +137,8 @@ const GalleryContent = () => (
       />
       <meta
         property="og:image"
-        content="res.cloudinary.com/dsz3obfpx/image/upload/v1748054415/ourstory.jpg" />
+        content="res.cloudinary.com/dsz3obfpx/image/upload/v1748054415/ourstory.jpg"
+      />
       <meta property="og:image:alt" content="Ayo & Osa Gallery" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://ayoandosa.love/gallery" />

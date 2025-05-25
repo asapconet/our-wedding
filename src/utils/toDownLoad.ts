@@ -2,7 +2,7 @@ import { IMAGE_ID_RANGES } from "@constants/gallery";
 
 export const downloadImage = async (
   imageUrl: string,
-  filename: string
+  filename: string,
 ): Promise<void> => {
   try {
     const response = await fetch(imageUrl);
@@ -30,7 +30,7 @@ export const generateFilename = (
   imageId: number,
   groomName: string = "ayo",
   brideName: string = "osa",
-  category?: string
+  category?: string,
 ): string => {
   const baseName = `${groomName}-${brideName}`;
   const categorySuffix = category ? `-${category}` : "";
@@ -41,9 +41,9 @@ export const imageIds = (() => {
   const numbers = ((start: number, end: number) => {
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
   })(IMAGE_ID_RANGES.start, IMAGE_ID_RANGES.end);
-  
+
   const randomizedNumbers = numbers.sort(() => Math.random() - 0.5);
-  
+
   const batchedArrayOfNumbers = ((array: number[], batchSize: number) => {
     const batches = [];
     for (let i = 0; i < array.length; i += batchSize) {

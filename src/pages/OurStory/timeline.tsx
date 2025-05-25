@@ -33,7 +33,7 @@ export const TimelineWithImagesLayout: React.FC<TimelineProps> = ({
                 <img
                   src={story.image}
                   alt={story.title}
-                  className="w-full h-48 sm:h-56 lg:h-64 object-cover rounded-lg shadow-lg"
+                  className="w-full h-full object-cover rounded-lg shadow-lg"
                 />
               )}
             </div>

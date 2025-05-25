@@ -163,7 +163,7 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
                         <span className="text-brown">{option}</span>
                       </label>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -205,13 +205,13 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ onSubmit, fullDescription }) => {
         onClose={() => setIsModalOpen(false)}
         brideDetails={{
           accountName: "Christabel Adams",
-          bankName: "One Bank",
-          accountNumber: "1234567890123456",
+          bankName: "First Bank",
+          accountNumber: "3121751534",
         }}
         groomDetails={{
           accountName: "Ayodeji Adeoti",
           bankName: "Zenith Bank",
-          accountNumber: "9876543210987654",
+          accountNumber: "1245787800",
         }}
       />
     </div>

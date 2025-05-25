@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import type { RefObject } from "react";
 
 const useContrastTextColor = <T extends HTMLElement>(
-  textRef: RefObject<T | null>
+  textRef: RefObject<T | null>,
 ): string => {
   const [textColor, setTextColor] = useState<string>("white");
   const canvasRef = useRef<HTMLCanvasElement>(document.createElement("canvas"));

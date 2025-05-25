@@ -6,10 +6,10 @@ export const TextOnlyLayout: React.FC<StoryLayoutProps> = ({
   content,
 }) => {
   return (
-    <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
-        <div className="text-center lg:text-left h-full flex items-center">
-          <h2 className="text-2xl sm:text-4xl lg:text-7xl font-light text-orange-400 mb-4 leading-tight">
+        <div className="text-center lg:text-left h-full flex items-center justify-center">
+          <h2 className="text-2xl sm:text-4xl lg:text-7xl font-light text-orange-400 mb-4 leading-tight text-center">
             {title}
           </h2>
         </div>

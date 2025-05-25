@@ -3,8 +3,6 @@ interface DailySchedule {
   [key: string]: ItineraryItem[];
 }
 
-export const days = ["Friday, July 11", "Saturday, July 12", "Sunday, July 13"];
-
 export const itineraryItems: DailySchedule = {
   "Friday, May 30": [
     {
@@ -51,7 +49,6 @@ export const itineraryItems: DailySchedule = {
       description:
         "Guests begin to depart for their various destinations. The couple and their families will be available to share final hugs, express gratitude, and bid everyone safe travels.",
     },
-    
   ],
   "Sunday, June 1": [
     {
@@ -59,14 +56,12 @@ export const itineraryItems: DailySchedule = {
       title: "Thanksgiving Service",
       description:
         "A thanksgiving service will be held at RCCG All Nations Assembly, FCT, to give glory to God for a successful wedding celebration and to bless the newlyweds.",
-    }
+    },
   ],
 };
-
 
 export const paragraphs = [
   "A meeting orchestrated by Fingers beyond the grasp of our feeble minds has blossomed into a beautiful union of two souls.",
   "It started with a tired evening of gruesome examinations in the University of Abuja, Abuja, Nigeria. Ayodeji, would proceed to a prayer meeting against his wishes, but in compliance to an encourage from his friend, Aaron.",
   "That evening will end with a hospital visit, but would mark the beginning of a beautiful journey.",
 ];
-

@@ -49,7 +49,7 @@ const Lightbox: React.FC<LightboxProps> = ({
           break;
       }
     },
-    [selectedImage, onClose, onPrevious, onNext]
+    [selectedImage, onClose, onPrevious, onNext],
   );
 
   useEffect(() => {
@@ -85,7 +85,7 @@ const Lightbox: React.FC<LightboxProps> = ({
             onClick={() =>
               onDownload(
                 selectedImage.src,
-                `gallery-${selectedImage.id || currentIndex}.jpg`
+                `gallery-${selectedImage.id || currentIndex}.jpg`,
               )
             }
             className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full
@@ -167,8 +167,10 @@ export const ImageGallery = ({ images }: ImageGalleryProps) => {
     <div className="w-full mt-8 bg-gray-100 py-6 sm:py-12 lg:py-24">
       <div className="relative">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6
-         gap-2 sm:gap-4 px-2 sm:px-4">
+          <div
+            className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6
+         gap-2 sm:gap-4 px-2 sm:px-4"
+          >
             {images.map((image, index) => (
               <div
                 key={image.id || index}

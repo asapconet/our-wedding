@@ -17,7 +17,7 @@ const useTypewriterOnScroll = ({
           observer.disconnect();
         }
       },
-      { threshold }
+      { threshold },
     );
 
     if (ref.current) {
