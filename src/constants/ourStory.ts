@@ -4,7 +4,7 @@ export const timelineData: StoryData[] = [
   {
     title: "We Meet – 2021",
     content:
-      "During our final year at university, our paths crossed in the choir at Redeemed Christian Fellowship. A quiet act of kindness during a prayer meeting began to draw us closer.",
+      "During our final year at the university, our paths crossed in the choir at Redeemed Christian Fellowship. A quiet act of kindness during a prayer meeting began to draw us closer.",
     image:
       "https://assets.ayoandosa.love/website-images/our-story/our-story-1.jpg",
   },
