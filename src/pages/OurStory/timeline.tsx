@@ -7,7 +7,7 @@ export const TimelineWithImagesLayout: React.FC<TimelineProps> = ({
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
       <h2 className="text-xl sm:text-2xl font-light text-gold mb-8 sm:mb-12 text-center lg:text-left">
-        Ayo & Osa's Love Timeline
+        Ayodeji & Christabel's Love Timeline
       </h2>
       <div className="space-y-12 sm:space-y-16">
         {stories.map((story, index) => (
