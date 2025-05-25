@@ -2,7 +2,7 @@ import React from "react";
 import type { GalleryHeaderProps } from "../../types/index";
 
 export const GalleryHeader: React.FC<GalleryHeaderProps> = ({
-  title = "Ayo & Osa",
+  title = "Christabel & Ayodeji",
   subtitle = "Our Photo Gallery",
   description = "Capturing our beautiful journey together",
 }) => {
