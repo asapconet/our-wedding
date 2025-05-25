@@ -26,7 +26,7 @@ const OurStoryPage: React.FC = () => {
       <section className="py-12 sm:py-16 bg-white">
         <div className="text-center mb-6 sm:mb-8 px-4">
           <h2 className="text-base sm:text-lg font-medium text-gold mb-4">
-            Ayo & Osa's Love Story
+            Christabel and Ayodeji's Love Story
           </h2>
         </div>
         <TextOnlyLayout
@@ -43,7 +43,7 @@ const OurStoryPage: React.FC = () => {
         </div>
         <ImageCarouselLayout
           title="Giant steps begin with a tiny step of kindness"
-          content="Ayodeji and Christabel met during their final year at university in 2021, both serving in the choir at Redeemed Christian Fellowship: whe played the keyboard, and she was a vocalist. At the time, their interactions were minimal; Christabel saw him as overly jovial, while Ayodeji hardly noticed her beyond fellowship duties and school activities.
+          content="Ayodeji and Christabel met during their final year at university in 2021, both serving in the choir at Redeemed Christian Fellowship: where he played the keyboard, and she was a vocalist. At the time, their interactions were minimal; Christabel saw him as overly jovial, while Ayodeji hardly noticed her beyond fellowship duties and school activities.
           
           After their first semester exams, a friend (now bestman) encouraged Ayodeji to attend a prayer meeting, where they found Christabel sitting outside, clearly unwell. Though she initially said she was fine, Ayodeji sensed otherwise and tried to get a female executive to check on her. When that didn’t yield much, he stepped in and took her to the hospital himself. She was diagnosed with malaria, and Ayodeji insisted on standing by her side, an act of kindness that became the starting point of something much more."
           image={sampleImage}
