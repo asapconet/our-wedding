@@ -62,6 +62,6 @@ export const itineraryItems: DailySchedule = {
 
 export const paragraphs = [
   "A meeting orchestrated by Fingers beyond the grasp of our feeble minds has blossomed into a beautiful union of two souls.",
-  "It started with a tired evening of gruesome examinations in the University of Abuja, Abuja, Nigeria. Ayodeji, would proceed to a prayer meeting against his wishes, but in compliance to an encourage from his friend, Aaron.",
+  "It started with a tired evening of gruesome examinations in the University of Abuja, Abuja, Nigeria. Ayodeji, would proceed to a prayer meeting against his wishes, but in compliance to an encouragement from his friend, Aaron.",
   "That evening will end with a hospital visit, but would mark the beginning of a beautiful journey.",
 ];
